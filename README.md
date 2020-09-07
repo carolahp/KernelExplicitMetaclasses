@@ -1,2 +1,2 @@
 # KernelExplicitMetaclasses
-Classes and method definition for a Kernel with explicit Metaclasses
+Class and method definitions for a Kernel with explicit Metaclasses
