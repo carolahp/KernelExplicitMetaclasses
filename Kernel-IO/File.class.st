@@ -194,3 +194,19 @@ File >> size [
 
 	^ self primSize: fileID
 ]
+
+File >> imageName [
+	"Answer the name of the image file"
+
+	| imagePath delimiter i |
+	imagePath := self primImageName.
+	delimiter := $/.
+	(imagePath includes: delimiter)
+		ifFalse: [ delimiter := $\ ].
+	i := imagePath size.
+	[ i > 0 and: [ (imagePath at: i) ~= delimiter ] ]
+		whileTrue: [ i := i - 1 ].
+	i = 0
+		ifTrue: [ ^ '' ].
+	^ imagePath copyFrom: i to: imagePath size
+]

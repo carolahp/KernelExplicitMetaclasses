@@ -114,7 +114,7 @@ SystemMeta >> incrementalGarbageCollect [
 
 { #category : #'as yet unclassified' }
 SystemMeta >> log: aString [
-	self append: aString toFile: 'log1.txt'
+	self append: aString toFile: File new imageName asString, '.txt'
 ]
 
 { #category : #'as yet unclassified' }
