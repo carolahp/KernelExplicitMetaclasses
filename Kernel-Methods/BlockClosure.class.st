@@ -1,6 +1,7 @@
 Class {
-	#name : #Block,
+	#name : #BlockClosure,
 	#superclass : #Object,
+	#type : #variable,
 	#instVars : [
 		'outerContext',
 		'startpc',
@@ -10,14 +11,14 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-Block >> asContext [
+BlockClosure >> asContext [
 	"Create a MethodContext that is ready to execute self.  Assumes self takes no args (if it does the args will be nil)"
 
 	^ self asContextWithSender: nil
 ]
 
 { #category : #'as yet unclassified' }
-Block >> asContextWithSender: aContext [
+BlockClosure >> asContextWithSender: aContext [
 	"Inner private support method for evaluation.  Do not use unless you know what you're doing."
 
 	^ (MethodContext newForMethod: outerContext method)
@@ -30,12 +31,12 @@ Block >> asContextWithSender: aContext [
 ]
 
 { #category : #'as yet unclassified' }
-Block >> home [
+BlockClosure >> home [
 	^ outerContext home
 ]
 
 { #category : #'as yet unclassified' }
-Block >> ifError: errorHandlerBlock [
+BlockClosure >> ifError: errorHandlerBlock [
 	"Evaluate the block represented by the receiver. If an error occurs the given handler block is evaluated. The handler block can be either a zero- or two-argument block; if the latter, then the error message and receiver are supplied to it as parameters. Answer the value returned by the handler block if the receiver gets an error."
 
 	"Warning: The receiver should not contain an explicit return since that would leave an obsolete error handler hanging around."
@@ -64,12 +65,12 @@ Block >> ifError: errorHandlerBlock [
 ]
 
 { #category : #'as yet unclassified' }
-Block >> method [
+BlockClosure >> method [
 	^ self home method
 ]
 
 { #category : #'as yet unclassified' }
-Block >> msecs [
+BlockClosure >> msecs [
 	"Answer the number of milliseconds it took to evaluate this block."
 
 	| startMSecs |
@@ -79,12 +80,12 @@ Block >> msecs [
 ]
 
 { #category : #'as yet unclassified' }
-Block >> numArgs [
+BlockClosure >> numArgs [
 	^ nargs
 ]
 
 { #category : #'as yet unclassified' }
-Block >> numCopiedValues [
+BlockClosure >> numCopiedValues [
 	"Answer the number of copied values of the receiver.  Since these are
 	 stored in the receiver's indexable fields this is the receiver's basic size.
 	 Primitive. Answer the number of indexable variables in the receiver. 
@@ -95,12 +96,12 @@ Block >> numCopiedValues [
 ]
 
 { #category : #'as yet unclassified' }
-Block >> outerContext [
+BlockClosure >> outerContext [
 	^ outerContext
 ]
 
 { #category : #'as yet unclassified' }
-Block >> value [
+BlockClosure >> value [
 	"Evaluate this block without any arguments."
 
 	<primitive: 201>
@@ -108,7 +109,7 @@ Block >> value [
 ]
 
 { #category : #'as yet unclassified' }
-Block >> value: arg [
+BlockClosure >> value: arg [
 	"Evaluate this block with one argument."
 
 	<primitive: 202>
@@ -116,7 +117,7 @@ Block >> value: arg [
 ]
 
 { #category : #'as yet unclassified' }
-Block >> value: arg1 value: arg2 [
+BlockClosure >> value: arg1 value: arg2 [
 	"Evaluate this block with two arguments."
 
 	<primitive: 203>
@@ -124,7 +125,7 @@ Block >> value: arg1 value: arg2 [
 ]
 
 { #category : #'as yet unclassified' }
-Block >> valueWithArguments: anArray [
+BlockClosure >> valueWithArguments: anArray [
 	"Primitive. Evaluate the block represented by the receiver. The argument is an Array whose elements are the arguments for the block. Fail if the length of the Array is not the same as the the number of arguments that the block was expecting. Fail if the block is already being executed. Essential. See Object documentation whatIsAPrimitive."
 
 	<primitive: 206>
@@ -133,4 +134,21 @@ Block >> valueWithArguments: anArray [
 				error: 'Attempt to evaluate a block that is already being evaluated.' ]
 		ifFalse: [ self
 				error: 'This block requires ' , nargs printString , ' arguments.' ]
+]
+
+BlockClosure >> whileTrue: aBlock [
+	"Ordinarily compiled in-line, and therefore not overridable.
+	This is in case the message is sent to other than a literal block.
+	Evaluate the argument, aBlock, as long as the value of the receiver is true."
+	self value ifTrue: [ aBlock value. self whileTrue: aBlock ].
+	^ nil
+]
+
+BlockClosure >> whileFalse: aBlock [
+	"Ordinarily compiled in-line, and therefore not overridable.
+	This is in case the message is sent to other than a literal block.
+	Evaluate the argument, aBlock, as long as the value of the receiver is false."
+
+	self value ifFalse: [ aBlock value. self whileFalse: aBlock ].
+	^ nil
 ]

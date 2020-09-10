@@ -1,16 +1,11 @@
 Class {
-	#name : #System,
-	#metaclass : #System,
+	#name : #SystemMeta,
 	#superclass : #Class,
-	#instVars : [
-		'specialObjectsArray',
-		'globals'
-	],
 	#category : #'Kernel-System'
 }
 
 { #category : #'as yet unclassified' }
-System >> allObjectsDo: aBlock [
+SystemMeta >> allObjectsDo: aBlock [
 	"Evaluate the argument, aBlock, for each object in the system excluding SmallIntegers."
 
 	| object |
@@ -21,7 +16,7 @@ System >> allObjectsDo: aBlock [
 ]
 
 { #category : #'as yet unclassified' }
-System >> append: aString toFile: fileName [
+SystemMeta >> append: aString toFile: fileName [
 	"Append the given string to the file with the given name."
 
 	| f |
@@ -34,7 +29,7 @@ System >> append: aString toFile: fileName [
 ]
 
 { #category : #'as yet unclassified' }
-System >> exitToDebugger [
+SystemMeta >> exitToDebugger [
 	"Tell the VM that we've encountered an unhandled error or halt."
 
 	<primitive: 114>
@@ -42,7 +37,7 @@ System >> exitToDebugger [
 ]
 
 { #category : #'as yet unclassified' }
-System >> garbageCollect [
+SystemMeta >> garbageCollect [
 	"Primitive. Reclaims all garbage and answers the number of bytes of available space."
 
 	<primitive: 130>
@@ -50,7 +45,7 @@ System >> garbageCollect [
 ]
 
 { #category : #'as yet unclassified' }
-System >> getVMParameters [
+SystemMeta >> getVMParameters [
 	"Answer an Array containing the current values of the VM's internal parameter and statistics registers. The same primitive can be called with one integer argument to read a specific parameter and with two parameters to set a writable parameter, although these variations may not be implemented. Optional."
 
 	"VM parameters are numbered as follows:
@@ -74,7 +69,7 @@ System >> getVMParameters [
 ]
 
 { #category : #'as yet unclassified' }
-System >> getchar [
+SystemMeta >> getchar [
 	"Answer the ASCII value of the next character from the keyboard buffer. Answer nil if no key has been typed."
 
 	| ch |
@@ -84,7 +79,7 @@ System >> getchar [
 ]
 
 { #category : #'as yet unclassified' }
-System >> graphicsTest [
+SystemMeta >> graphicsTest [
 	"This method is called when the image is started. Add a call to your own code here."
 
 	"MSystem graphicsTest"
@@ -110,7 +105,7 @@ System >> graphicsTest [
 ]
 
 { #category : #'as yet unclassified' }
-System >> incrementalGarbageCollect [
+SystemMeta >> incrementalGarbageCollect [
 	"Primitive. Reclaims recently created garbage fairly quickly and answers the number of bytes of available space."
 
 	<primitive: 131>
@@ -118,12 +113,12 @@ System >> incrementalGarbageCollect [
 ]
 
 { #category : #'as yet unclassified' }
-System >> log: aString [
+SystemMeta >> log: aString [
 	self append: aString toFile: 'log1.txt'
 ]
 
 { #category : #'as yet unclassified' }
-System >> milliseconds [
+SystemMeta >> milliseconds [
 	"Answer the current value of the millisecond clock. Optional primitive."
 
 	"Note: The millisecond clock may wrap around frequently, depending on the underlaying hardware. If no hardware clock is available, it may always return 0."
@@ -133,7 +128,7 @@ System >> milliseconds [
 ]
 
 { #category : #'as yet unclassified' }
-System >> primKeyboardNext [
+SystemMeta >> primKeyboardNext [
 	"Answer the next keycode from the keyboard buffer. A keycode is 12 bits: four modifier flags in the 4 most significant bits and the 8 bit ISO character in the least significant bits. Answer nil if no key has been typed."
 
 	<primitive: 108>
@@ -141,7 +136,7 @@ System >> primKeyboardNext [
 ]
 
 { #category : #'as yet unclassified' }
-System >> primitiveGetSpecialObjectsArray [
+SystemMeta >> primitiveGetSpecialObjectsArray [
 	"Answer the virtual machine's special objects array."
 
 	<primitive: 129>
@@ -149,7 +144,7 @@ System >> primitiveGetSpecialObjectsArray [
 ]
 
 { #category : #'as yet unclassified' }
-System >> quit [
+SystemMeta >> quit [
 	"Exit from the system."
 
 	<primitive: 113>
@@ -157,7 +152,7 @@ System >> quit [
 ]
 
 { #category : #'as yet unclassified' }
-System >> snapshotAndQuit [
+SystemMeta >> snapshotAndQuit [
 	| snapshotResult isImageStarting | 
 	snapshotResult := System snapshotPrimitive.	"<-- PC frozen here on image file"
 	isImageStarting := (snapshotResult == true).
@@ -165,7 +160,7 @@ System >> snapshotAndQuit [
 ]
 
 { #category : #'as yet unclassified' }
-System >> snapshotPrimitive [
+SystemMeta >> snapshotPrimitive [
 	"Primitive. Write the current state of the object memory on a file in the
 	same format as the Smalltalk-80 release. The file can later be resumed,
 	returning you to this exact state. Return normally after writing the file.
@@ -180,15 +175,15 @@ System >> snapshotPrimitive [
 ]
 
 { #category : #'as yet unclassified' }
-System >> start [
+SystemMeta >> start [
 	Point new.
-	self log: 'welcome to pharo candle!'.
+	self log: 'welcome to pharo candle with explicit metaclasses!'.
 	self log: self tinyBenchmarks.
 	self snapshotAndQuit
 ]
 
 { #category : #'as yet unclassified' }
-System >> testByteObject [
+SystemMeta >> testByteObject [
 	| test |
 	test := (Object
 		variableByteSubclass: #Test
@@ -199,7 +194,7 @@ System >> testByteObject [
 ]
 
 { #category : #'as yet unclassified' }
-System >> testNormalObject [
+SystemMeta >> testNormalObject [
 	| test |
 	test := (Object
 		subclass: #Test
@@ -211,7 +206,7 @@ System >> testNormalObject [
 ]
 
 { #category : #'as yet unclassified' }
-System >> tinyBenchmarks [
+SystemMeta >> tinyBenchmarks [
 	"Report the results of running the two tiny benchmarks."
 
 	| n t1 t2 r |
@@ -220,19 +215,4 @@ System >> tinyBenchmarks [
 	t2 := [ r := 28 benchFib ] msecs.
 	^ (n * 500000 * 1000 // t1) printString , ' bytecodes/sec; '
 		, (r * 1000 // t2) printString , ' sends/sec'
-]
-
-{ #category : #accessing }
-System >> globals [
-	^ globals
-]
-
-{ #category : #accessing }
-System >> globals: aSystemDictionary [
-	globals := aSystemDictionary
-]
-
-{ #category : #accessing }
-System >> specialObjectsArray: anArray [
-	specialObjectsArray := anArray
 ]

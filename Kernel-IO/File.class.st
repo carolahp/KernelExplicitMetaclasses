@@ -5,7 +5,7 @@ Class {
 		'name',
 		'fileID'
 	],
-	#category : #'Kernel-Optional'
+	#category : #'Kernel-IO'
 }
 
 { #category : #'as yet unclassified' }

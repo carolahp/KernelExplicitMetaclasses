@@ -1,13 +1,13 @@
 Class {
 	#name : #String,
 	#superclass : #ArrayedCollection,
+	#metaclass : #StringMeta,
 	#classVars : [
 		'AsciiOrder',
 		'CaseInsensitiveOrder',
 		'CaseSensitiveOrder',
 		'LowercasingTable'
 	],
-	#metaclass : #StringMeta,
 	#category : #'Kernel-Collections-Ordered'
 }
 

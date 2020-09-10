@@ -1,18 +1,18 @@
 Class {
-	#name : #Symbol,
+	#name : #ByteSymbol,
 	#superclass : #String,
-	#metaclass : #SymbolMeta,
+	#metaclass : #ByteSymbolMeta,
 	#type : #bytes,
 	#category : #'Kernel-Collections-Ordered'
 }
 
 { #category : #'as yet unclassified' }
-Symbol >> = anObject [
+ByteSymbol >> = anObject [
 	^ self == anObject
 ]
 
 { #category : #'as yet unclassified' }
-Symbol >> asString [
+ByteSymbol >> asString [
 	"Answer a string containing my characters."
 
 	| sz result |
@@ -27,36 +27,36 @@ Symbol >> asString [
 ]
 
 { #category : #'as yet unclassified' }
-Symbol >> asSymbol [
+ByteSymbol >> asSymbol [
 	^ self
 ]
 
 { #category : #'as yet unclassified' }
-Symbol >> at: anInteger put: anObject [
+ByteSymbol >> at: anInteger put: anObject [
 	"You cannot modify the receiver."
 
 	self errorNoModification
 ]
 
 { #category : #'as yet unclassified' }
-Symbol >> basicCopy [
+ByteSymbol >> basicCopy [
 	"Answer myself because Symbols are unique."
 
 	
 ]
 
 { #category : #'as yet unclassified' }
-Symbol >> errorNoModification [
+ByteSymbol >> errorNoModification [
 	self error: 'Symbols can not be modified.'
 ]
 
 { #category : #'as yet unclassified' }
-Symbol >> hash [
+ByteSymbol >> hash [
 	^ self identityHash
 ]
 
 { #category : #'as yet unclassified' }
-Symbol >> initFrom: aString [
+ByteSymbol >> initFrom: aString [
 	"Warning! Use only to initialize new Symbols. Symbols are assumed to be immutable there after."
 
 	self size = aString size
@@ -69,16 +69,16 @@ Symbol >> initFrom: aString [
 ]
 
 { #category : #'as yet unclassified' }
-Symbol >> printOn: aStream [
+ByteSymbol >> printOn: aStream [
 	aStream nextPutAll: self
 ]
 
 { #category : #'as yet unclassified' }
-Symbol >> replaceFrom: start to: stop with: replacement startingAt: repStart [
+ByteSymbol >> replaceFrom: start to: stop with: replacement startingAt: repStart [
 	self errorNoModification
 ]
 
 { #category : #'as yet unclassified' }
-Symbol >> species [
+ByteSymbol >> species [
 	^ String
 ]

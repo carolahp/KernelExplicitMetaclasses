@@ -1,6 +1,5 @@
 Class {
 	#name : #Class,
-	#metaclass : #Metaclass,
 	#superclass : #Behavior,
 	#instVars : [
 		'name',

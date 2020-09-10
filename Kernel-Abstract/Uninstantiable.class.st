@@ -1,7 +1,7 @@
 Class {
 	#name : #Uninstantiable,
 	#superclass : #Class,
-	#category : #'Kernel-Objects'
+	#category : #'Kernel-Abstract'
 }
 
 { #category : #'as yet unclassified' }
