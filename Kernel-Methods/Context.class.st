@@ -6,7 +6,10 @@ Class {
 	#instVars : [
 		'sender',
 		'pc',
-		'stackp'
+		'stackp',
+		'method',
+		'closureOrNil',
+		'receiver'
 	],
 	#category : #'Kernel-Methods'
 }
@@ -32,4 +35,33 @@ Context >> sender [
 	"Answer the context that sent the message that created the receiver."
 
 	^ sender
+]
+
+{ #category : #'as yet unclassified' }
+Context >> receiver [
+	"Answer the context that sent the message that created the receiver."
+
+	^ receiver
+]
+
+{ #category : #'as yet unclassified' }
+Context >> receiver [
+	"Answer the context that sent the message that created the receiver."
+
+	^ receiver
+]
+
+{ #category : #'as yet unclassified' }
+Context >> method [
+	"Answer the context that sent the message that created the receiver."
+
+	^ method
+]
+
+{ #category : #'as yet unclassified' }
+Context >> printOn: aStream [
+	aStream
+		nextPutAll: receiver asString;
+		nextPutAll: ' >>> ';
+		nextPutAll: self method selector asString
 ]
