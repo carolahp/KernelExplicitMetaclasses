@@ -92,3 +92,20 @@ CompiledMethod >> literalAt: index [
 
 	^self objectAt: index + 1
 ]
+
+CompiledMethod >> printOn: aStream [
+	"Overrides method inherited from the byte arrayed collection."
+
+	aStream 
+		nextPutAll: self methodClass asString; 
+		nextPutAll: '>>'; 
+		nextPutAll: self selector asString.
+]
+
+CompiledMethod >> methodClass [
+	^self literalAt: self numLiterals
+]
+
+CompiledMethod >> asString [
+	^ self printString
+]
