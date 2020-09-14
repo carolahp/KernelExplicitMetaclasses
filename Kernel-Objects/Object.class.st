@@ -594,3 +594,9 @@ Object >> ~~ anObject [
 		ifTrue: [ false ]
 		ifFalse: [ true ]
 ]
+
+{ #category : #'as yet unclassified' }
+Object >> isSymbol [
+	^ false
+]
+

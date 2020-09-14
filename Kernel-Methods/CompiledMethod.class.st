@@ -65,3 +65,30 @@ CompiledMethod >> objectAt: index put: value [
 	<primitive: 69>
 	self primitiveFailed
 ]
+
+CompiledMethod >> selector [
+	"Answer a method's selector.  This is either the penultimate literal,
+	 or, if the method has any properties or pragmas, the selector of
+	 the MethodProperties stored in the penultimate literal."
+	| penultimateLiteral | 
+	penultimateLiteral := self penultimateLiteral.
+	penultimateLiteral isNil ifTrue: [^nil].
+	^ penultimateLiteral isSymbol
+		ifTrue: [penultimateLiteral]
+		ifFalse: [penultimateLiteral instVarAt: 2]
+]
+
+CompiledMethod >> penultimateLiteral [
+	"Answer the penultimate literal of the receiver, which holds either
+	 the receiver's selector or its properties (which will hold the selector)."
+	| pIndex |
+	^(pIndex := self numLiterals - 1) > 0 
+		ifTrue: [self literalAt: pIndex]
+		ifFalse: [nil]
+]
+
+CompiledMethod >> literalAt: index [
+	"Answer the literal indexed by the argument."
+
+	^self objectAt: index + 1
+]

@@ -82,3 +82,9 @@ ByteSymbol >> replaceFrom: start to: stop with: replacement startingAt: repStart
 ByteSymbol >> species [
 	^ String
 ]
+
+{ #category : #'as yet unclassified' }
+ByteSymbol >> isSymbol [
+	^ true
+]
+
