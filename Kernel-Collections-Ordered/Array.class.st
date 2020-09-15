@@ -59,3 +59,6 @@ Array >> replaceFrom: start to: stop with: replacement startingAt: repStart [
 		with: replacement
 		startingAt: repStart
 ]
+Array >> asOrderedCollection [
+	^ OrderedCollection newFrom: self
+]

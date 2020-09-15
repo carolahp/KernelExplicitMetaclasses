@@ -15,3 +15,12 @@ OrderedCollectionMeta >> new: anInteger [
 
 	^ self basicNew setCollection: (Array new: anInteger)
 ]
+
+OrderedCollectionMeta >> newFrom: aCollection [
+	"Answer an instance of me containing the same elements as aCollection."
+
+	| newCollection |
+	newCollection := self new: aCollection size.
+	newCollection addAll: aCollection.
+	^newCollection
+]

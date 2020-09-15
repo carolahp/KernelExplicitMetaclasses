@@ -274,11 +274,68 @@ OrderedCollection >> select: aBlock [
 { #category : #'as yet unclassified' }
 OrderedCollection >> setCollection: anArray [
 	array := anArray.
-	firstIndex := array size // 3 max: 1.
-	lastIndex := firstIndex - 1
+	self resetTo: 1
+	"firstIndex := array size // 3 max: 1.
+		lastIndex := firstIndex - 1"
 ]
 
 { #category : #'as yet unclassified' }
 OrderedCollection >> size [
 	^ lastIndex - firstIndex + 1
 ]
+
+
+OrderedCollection >> addAll: aCollection [
+	"Add each element of aCollection at the end of the receiver. 
+	Answer aCollection."
+
+	aCollection do: [:each | self addLast: each].
+	^aCollection
+]
+
+OrderedCollection >> addLast: newObject [
+	"Add newObject to the end of the receiver. Answer newObject."
+
+	lastIndex = array size ifTrue: [self makeRoomAtLast].
+	lastIndex := lastIndex + 1.
+	array at: lastIndex put: newObject.
+	^ newObject
+]
+
+OrderedCollection >> makeRoomAtLast [
+	"Make some empty slots at the end of the array. If we have more than 50% free space, then just move the elements, so that the last 50% of the slots are free, otherwise add new free slots to the end by growing. Precondition: lastIndex = array size"
+	
+	| tally newFirstIndex newLastIndex |
+	tally := self size.
+	tally * 2 >= lastIndex ifTrue: [ ^self growAtLast ].
+	tally = 0 ifTrue: [ ^self resetTo: 1 ].
+	newLastIndex := lastIndex // 2.
+	newFirstIndex := newLastIndex - lastIndex + firstIndex.
+	array 
+		replaceFrom: newFirstIndex
+		to: newLastIndex
+		with: array
+		startingAt: firstIndex.
+	array from: newLastIndex + 1 to: lastIndex put: nil.
+	firstIndex := newFirstIndex.
+	lastIndex := newLastIndex
+]
+
+OrderedCollection >> growAtLast [
+	"Add new empty slots to the end of array, while keeping the empty slots at the front."
+
+	| newArray |
+	newArray := Array new: (array size * 2 max: 1).
+	newArray 
+		replaceFrom: firstIndex
+		to: lastIndex
+		with: array
+		startingAt: firstIndex.
+	array := newArray
+]
+
+OrderedCollection >> resetTo: index [
+	firstIndex := index.
+	lastIndex := firstIndex - 1
+]
+
