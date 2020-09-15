@@ -178,3 +178,10 @@ Collection >> sum [
 	self do: [ :el | total := total + el ].
 	^ total - seed	"subtract the seed value from the total"
 ]
+
+{ #category : #'as yet unclassified' }
+Collection >> average [
+	"Calculate the average of a collection, return a CollectionIsEmpty exception if the collection is empty. Look averageIfEmpty: aBlock"
+	
+	^ self sum / self size
+]

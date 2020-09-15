@@ -179,8 +179,9 @@ Object >> doesNotUnderstand: aMessage [
 
 	| errorString handler |
 	errorString := 'Message not understood: ' , aMessage selector.
-	(handler := Processor activeProcess errorHandler)
-		ifNil: [ self handleExceptionName: errorString context: thisContext ]
+	System log: errorString.
+	System log: '    ', thisContext sender asString.
+	(handler := (Smalltalk at: #Processor) activeProcess errorHandler) ifNil: [ self handleExceptionName: errorString context: thisContext ]
 		ifNotNil: [ handler value: errorString value: self ].
 	^ aMessage sentTo: self	"resend the message if the user proceeds from the debugger"
 ]
@@ -192,7 +193,9 @@ Object >> error: aString [
 	"PCPbject new error: 'test error'"
 
 	| handler |
-	(handler := Processor activeProcess errorHandler)
+	System log: 'Error: ', aString asString.
+	System snapshotPrimitive.
+	(handler := (Smalltalk at: #Processor) activeProcess errorHandler)
 		ifNil: [ self handleExceptionName: aString context: thisContext ]
 		ifNotNil: [ handler value: aString value: self ]
 ]
@@ -600,3 +603,8 @@ Object >> isSymbol [
 	^ false
 ]
 
+Object >> errorNotIndexable [
+	"Create an error notification that the receiver is not indexable."
+
+	self error: ('Instances of ' , self class name, ' are not indexable. (I am ', self asString,')')
+]

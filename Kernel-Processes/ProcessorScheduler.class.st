@@ -71,3 +71,15 @@ ProcessorScheduler >> remove: aProcess ifAbsent: aBlock [
 		ifAbsent: aBlock.
 	^ aProcess
 ]
+
+{ #category : #'as yet unclassified' }
+ProcessorScheduler >> printOn: aStream [
+	aStream nextPutAll: 'a ProcessorScheduler!'
+]
+
+{ #category : #'as yet unclassified' }
+ProcessorScheduler >> errorHandler [
+	System log: 'I am the error handler. I will save and quit'.
+	System snapshotAndQuit
+]
+
