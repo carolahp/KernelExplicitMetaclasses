@@ -178,10 +178,12 @@ Object >> doesNotUnderstand: aMessage [
 	"Object new argh"
 
 	| errorString handler |
-	errorString := 'Message not understood: ' , aMessage selector.
+	errorString := 'Message not understoodm: ' , aMessage selector.
 	System log: errorString.
+	System snapshotAndQuit.
 	System log: '    ', thisContext sender asString.
-	(handler := (Smalltalk at: #Processor) activeProcess errorHandler) ifNil: [ self handleExceptionName: errorString context: thisContext ]
+	(handler := (Smalltalk at: #Processor) activeProcess errorHandler) 
+	ifNil: [ self handleExceptionName: errorString context: thisContext ]
 		ifNotNil: [ handler value: errorString value: self ].
 	^ aMessage sentTo: self	"resend the message if the user proceeds from the debugger"
 ]
@@ -194,7 +196,7 @@ Object >> error: aString [
 
 	| handler |
 	System log: 'Error: ', aString asString.
-	System snapshotPrimitive.
+	System snapshotAndQuit.
 	(handler := (Smalltalk at: #Processor) activeProcess errorHandler)
 		ifNil: [ self handleExceptionName: aString context: thisContext ]
 		ifNotNil: [ handler value: aString value: self ]

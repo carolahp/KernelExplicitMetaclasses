@@ -144,7 +144,7 @@ Float >> absPrintOn: aStream base: base [
 		ifFalse: [ r := self timesTwoPower: significantBits.
 			s := 1.0 timesTwoPower: significantBits.
 			mMinus := 1.0 timesTwoPower: (exp max: -1024).
-			mPlus := exp = MinValLogBase2 | (self significand ~= 1.0)
+			mPlus := exp = self MinValLogBase2 | (self significand ~= 1.0)
 				ifTrue: [ mMinus ]
 				ifFalse: [ mMinus * 2.0 ] ].
 	baseExpEstimate >= 0
@@ -206,7 +206,7 @@ Float >> adaptToInteger: rcvr andSend: selector [
 Float >> arcCos [
 	"Answer the angle in radians."
 
-	^ Halfpi - self arcSin
+	^ self Halfpi - self arcSin
 ]
 
 { #category : #'as yet unclassified' }
@@ -216,7 +216,7 @@ Float >> arcSin [
 	(self < -1.0 or: [ self > 1.0 ])
 		ifTrue: [ self error: 'Value out of range' ].
 	(self = -1.0 or: [ self = 1.0 ])
-		ifTrue: [ ^ Halfpi ]
+		ifTrue: [ ^ self Halfpi ]
 		ifFalse: [ ^ (self / (1.0 - (self * self)) sqrt) arcTan ]
 ]
 
@@ -229,8 +229,8 @@ Float >> arcTan [
 	| theta eps step sinTheta cosTheta |
 	self < 0.0
 		ifTrue: [ ^ 0.0 - (0.0 - self) arcTan ].	"Newton-Raphson"	"first guess"
-	theta := self * Halfpi / (self + 1.0).	"iterate"
-	eps := Halfpi * Epsilon.
+	theta := self * self Halfpi / (self + 1.0).	"iterate"
+	eps := self Halfpi * self Epsilon.
 	step := theta.
 	[ step * step > eps ]
 		whileTrue: [ sinTheta := theta sin.
@@ -251,19 +251,19 @@ Float >> asFloat [
 Float >> cos [
 	"Answer the cosine of the receiver taken as an angle in radians."
 
-	^ (self + Halfpi) sin
+	^ (self + self Halfpi) sin
 ]
 
 { #category : #'as yet unclassified' }
 Float >> degreesToRadians [
 	"Answer the receiver in radians. Assumes the receiver is in degrees."
 
-	^ self * RadiansPerDegree
+	^ self * self RadiansPerDegree
 ]
 
 { #category : #'as yet unclassified' }
 Float >> exp [
-	"Answer E raised to the receiver power.
+	"Answer self E raised to the receiver power.
 	 Optional. See Object documentation whatIsAPrimitive."
 
 	<primitive: 59>
@@ -272,16 +272,16 @@ Float >> exp [
 		ifTrue: [ ^ self negated exp reciprocal ].	"Taylor series"	"check the special cases"
 	self = 0.0
 		ifTrue: [ ^ 1 ].
-	self abs > MaxValLn
-		ifTrue: [ self error: 'exp overflow' ].	"get first approximation by raising e to integer power"
-	base := E raisedToInteger: self truncated.	"now compute the correction with a short Taylor series"	"fract will be 0..1, so correction will be 1..E"	"in the worst case, convergance time is logarithmic with 1/Epsilon"
+	self abs > self MaxValLn
+		ifTrue: [ self error: 'exp overflow' ].	"get first approximation by raising self E to integer power"
+	base := self E raisedToInteger: self truncated.	"now compute the correction with a short Taylor series"	"fract will be 0..1, so correction will be 1..E"	"in the worst case, convergance time is logarithmic with 1/self Epsilon"
 	fract := self fractionPart.
 	fract = 0.0
 		ifTrue: [ ^ base ].	"no correction required"
 	correction := 1.0 + fract.
 	delta := fract * fract / 2.0.
 	div := 2.0.
-	[ delta > Epsilon ]
+	[ delta > self Epsilon ]
 		whileTrue: [ correction := correction + delta.
 			div := div + 1.0.
 			delta := delta * fract / div ].
@@ -339,7 +339,7 @@ Float >> hash [
 Float >> isInfinite [
 	"Return true if the receiver is positive or negative infinity."
 
-	^ self = Infinity or: [ self = NegativeInfinity ]
+	^ self = self Infinity or: [ self = self NegativeInfinity ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -359,13 +359,13 @@ Float >> ln [
 	self <= 0.0
 		ifTrue: [ self error: 'ln is only defined for x > 0.0' ].	"Taylor series"	"get a rough estimate from binary exponent"
 	expt := self exponent.
-	n := Ln2 * expt.
+	n := self Ln2 * expt.
 	mant := self timesTwoPower: 0 - expt.	"compute fine correction from mantinssa in Taylor series"	"mant is in the range [0..2]"	"we unroll the loop to avoid use of abs"
 	x := mant - 1.0.
 	div := 1.0.
 	pow := delta := sum := x.
 	x := x negated.	"x <= 0"
-	eps := Epsilon * (n abs + 1.0).
+	eps := self Epsilon * (n abs + 1.0).
 	[ delta > eps ]
 		whileTrue: [ div := div + 1.0.
 			pow := pow * x.
@@ -383,7 +383,7 @@ Float >> ln [
 Float >> log [
 	"Answer the base 10 logarithm of the receiver."
 
-	^ self ln / Ln10
+	^ self ln / self Ln10
 ]
 
 { #category : #'as yet unclassified' }
@@ -414,7 +414,7 @@ Float >> printOn: aStream base: base [
 Float >> radiansToDegrees [
 	"Answer the receiver in degrees. Assumes the receiver is in radians."
 
-	^ self / RadiansPerDegree
+	^ self / self RadiansPerDegree
 ]
 
 { #category : #'as yet unclassified' }
@@ -436,8 +436,8 @@ Float >> reciprocalLogBase2 [
 	"optimized for self = 10, for use in conversion for printing"
 
 	^ self = 10.0
-		ifTrue: [ Ln2 / Ln10 ]
-		ifFalse: [ Ln2 / self ln ]
+		ifTrue: [ self Ln2 / self Ln10 ]
+		ifFalse: [ self Ln2 / self ln ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -474,17 +474,17 @@ Float >> sin [
 	<primitive: 56>
 	| sum delta self2 i |
 	self < 0.0
-		ifTrue: [ ^ 0.0 - (0.0 - self) sin ].	"Taylor series"	"normalize to the range [0..Pi/2]"
-	self > Twopi
-		ifTrue: [ ^ (self \\ Twopi) sin ].
-	self > Pi
-		ifTrue: [ ^ 0.0 - (self - Pi) sin ].
-	self > Halfpi
-		ifTrue: [ ^ (Pi - self) sin ].	"unroll loop to avoid use of abs"
+		ifTrue: [ ^ 0.0 - (0.0 - self) sin ].	"Taylor series"	"normalize to the range [0..self Pi/2]"
+	self > self Twopi
+		ifTrue: [ ^ (self \\ self Twopi) sin ].
+	self > self Pi
+		ifTrue: [ ^ 0.0 - (self - self Pi) sin ].
+	self > self Halfpi
+		ifTrue: [ ^ (self Pi - self) sin ].	"unroll loop to avoid use of abs"
 	sum := delta := self.
 	self2 := 0.0 - (self * self).
 	i := 2.0.
-	[ delta > Epsilon ]
+	[ delta > self Epsilon ]
 		whileTrue: [ delta := delta * self2 / (i * (i + 1.0)).
 			i := i + 2.0.
 			sum := sum + delta.	"twice"
@@ -508,7 +508,7 @@ Float >> sqrt [
 				ifFalse: [ ^ self error: 'sqrt is invalid for x < 0' ] ].	"Newton-Raphson"	"first guess is half the exponent"
 	exp := self exponent // 2.
 	guess := self timesTwoPower: 0 - exp.	"get eps value"
-	eps := guess * Epsilon.
+	eps := guess * self Epsilon.
 	eps := eps * eps.
 	delta := (self - (guess * guess)) / (guess * 2.0).
 	[ delta * delta > eps ]
@@ -568,3 +568,22 @@ Float >> ~= aNumber [
 	<primitive: 48>
 	^ super ~= aNumber
 ]
+
+
+Float >> E [^ 2.718281828459045235360287471353]
+Float >> Epsilon [^ 0.000000000001]
+Float >> Halfpi [^ 3.14159265358979323846264338327950288 / 2.0]
+Float >> Infinity [^ 1.7976931348623157e308 * 1.7976931348623157e308]
+Float >> Ln10 [^ 10.0 ln]
+Float >> Ln2 [^ 0.69314718055994530941723212145817657]
+Float >> MaxVal [^ 1.7976931348623157e308]
+Float >> MaxValLn [^ 709.782712893384]
+Float >> MinValLogBase2 [^ -1074]
+Float >> NaN [^ 1.7976931348623157e308 - 1.7976931348623157e308]
+Float >> NegativeInfinity [^ 0.0 - 1.7976931348623157e308 * 1.7976931348623157e308]
+Float >> NegativeZero [^ 1.0 / (1.7976931348623157e308 * 1.7976931348623157e308) negated]
+Float >> Pi [^ 3.14159265358979323846264338327950288]
+Float >> RadiansPerDegree [^ 3.14159265358979323846264338327950288 / 180.0]
+Float >> Sqrt2 [^ 1.41421356237309504880168872420969808]
+Float >> Twopi [^ 3.14159265358979323846264338327950288 * 2.0]
+
