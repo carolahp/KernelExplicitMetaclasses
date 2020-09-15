@@ -65,3 +65,19 @@ Context >> printOn: aStream [
 		nextPutAll: ' >>> ';
 		nextPutAll: self method selector asString
 ]
+
+Context >> callStack [
+	^ self sender isNil 
+		ifTrue:  [{ self } asOrderedCollection]
+		ifFalse: [{ self } asOrderedCollection addAll: self sender callStack; yourself]
+]
+
+Context >> stringCallStack [
+	| stream |
+	stream := WriteStream on: (String new: 100).
+	self callStack do: [:contx | 
+		stream 
+			nextPutAll: contx asString;
+			nextPutAll: Character cr asString ].
+	^ stream contents
+]

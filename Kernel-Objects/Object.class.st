@@ -178,10 +178,12 @@ Object >> doesNotUnderstand: aMessage [
 	"Object new argh"
 
 	| errorString handler |
-	errorString := 'Message not understoodm: ' , aMessage selector.
+	errorString := 'Message not understood: ' , aMessage selector.
 	System log: errorString.
+	System log: Character cr asString, 'CallStack:'.
+	System log: thisContext stringCallStack asString.
 	System snapshotAndQuit.
-	System log: '    ', thisContext sender asString.
+	
 	(handler := (Smalltalk at: #Processor) activeProcess errorHandler) 
 	ifNil: [ self handleExceptionName: errorString context: thisContext ]
 		ifNotNil: [ handler value: errorString value: self ].
@@ -191,12 +193,12 @@ Object >> doesNotUnderstand: aMessage [
 { #category : #'as yet unclassified' }
 Object >> error: aString [
 	"The default behavior for error: is the same as halt:. The code is replicated in order to avoid having an extra message send on the stack. This additional message is the one a subclass should override in order to change the error handling behavior."
-
-	"PCPbject new error: 'test error'"
-
 	| handler |
 	System log: 'Error: ', aString asString.
+	System log: Character cr asString, 'CallStack:'.
+	System log: thisContext stringCallStack asString.
 	System snapshotAndQuit.
+	
 	(handler := (Smalltalk at: #Processor) activeProcess errorHandler)
 		ifNil: [ self handleExceptionName: aString context: thisContext ]
 		ifNotNil: [ handler value: aString value: self ]
