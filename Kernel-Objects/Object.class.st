@@ -612,3 +612,13 @@ Object >> errorNotIndexable [
 
 	self error: ('Instances of ' , self class name, ' are not indexable. (I am ', self asString,')')
 ]
+
+Object >> setPinnedInMemory: aBoolean [
+	"The VM's garbage collector routinely moves objects as it reclaims and compacts
+	 memory. But it can also pin an object so that it will not be moved around in memory,
+    while still being reclamable by the garbage collector. This can make
+	 it easier to pass objects out through the FFI. Objects are unpinnned when created.
+	 This primitive either pins or unpins an object, and answers if it was already pinned."
+	<primitive: 184 error: ec>
+	^self primitiveFailed
+]
