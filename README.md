@@ -1,5 +1,5 @@
 # KernelExplicitMetaclasses
-Class and method definitions for a Pharo like kernel with explicit metaclasses.
+Class and method definitions for a ObjVLisp like kernel with explicit metaclasses, compatible with Pharo 8.0 VM.
 
 ```explicitMetaclasses := MExplicitMetaclasses new name: #KernelExplicit; yourself.
 explicitMetaclasses loadTonelRepository: './bootstrap/language-definitions-new-repo/KernelExplicitGit/KernelExplicitMetaclasses'.
