@@ -102,8 +102,15 @@ CompiledMethod >> printOn: aStream [
 		nextPutAll: self selector asString.
 ]
 
-CompiledMethod >> methodClass [
+CompiledMethod >> classBinding [
+
 	^self literalAt: self numLiterals
+]
+
+
+CompiledMethod >> methodClass [
+
+	^self classBinding value
 ]
 
 CompiledMethod >> asString [

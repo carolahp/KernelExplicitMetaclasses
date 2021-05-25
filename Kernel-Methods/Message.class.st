@@ -26,9 +26,9 @@ Message >> lookupClass [
 { #category : #'as yet unclassified' }
 Message >> printOn: aStream [
 	"Refer to the comment in Object|printOn:."
-
 	super printOn: aStream.
 	aStream
+		nextPutAll: ' lookupClass: ' , lookupClass printString;
 		nextPutAll: ' selector: ' , selector printString;
 		nextPutAll: ' args: ' , arguments printString
 ]

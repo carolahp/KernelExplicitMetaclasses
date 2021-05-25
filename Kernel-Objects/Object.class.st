@@ -178,7 +178,7 @@ Object >> doesNotUnderstand: aMessage [
 	"Object new argh"
 
 	| errorString handler |
-	errorString := 'Message not understood: ' , aMessage selector.
+	errorString := 'Message not understood -> ' , aMessage asString.
 	System log: errorString.
 	System log: Character cr asString, 'CallStack:'.
 	System log: thisContext stringCallStack asString.

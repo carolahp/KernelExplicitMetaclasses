@@ -61,7 +61,9 @@ Context >> method [
 { #category : #'as yet unclassified' }
 Context >> printOn: aStream [
 	aStream
-		nextPutAll: receiver asString;
+		nextPutAll:  '*', receiver asString, '* ';
+		nextPutAll: receiver class asString;
+		nextPutAll: '(', self method methodClass asString, ')';
 		nextPutAll: ' >>> ';
 		nextPutAll: self method selector asString
 ]
