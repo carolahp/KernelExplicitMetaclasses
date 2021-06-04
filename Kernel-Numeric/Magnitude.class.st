@@ -1,6 +1,9 @@
 Class {
 	#name : #Magnitude,
 	#superclass : #Object,
+	#role : 'Magnitude',
+	#metaclass : #Class,
+	#indexInClassTable : 1058,
 	#category : #'Kernel-Numeric'
 }
 

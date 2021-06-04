@@ -1,6 +1,8 @@
 Class {
 	#name : #ContextMeta,
 	#superclass : #Class,
+	#metaclass : #Class,
+	#indexInClassTable : 1038,
 	#category : #'Kernel-Methods'
 }
 

@@ -1,6 +1,8 @@
 Class {
 	#name : #FloatMeta,
 	#superclass : #NumberMeta,
+	#metaclass : #Class,
+	#indexInClassTable : 1044,
 	#category : #'Kernel-Numeric'
 }
 

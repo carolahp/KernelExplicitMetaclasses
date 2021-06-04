@@ -1,6 +1,8 @@
 Class {
 	#name : #IntervalMeta,
 	#superclass : #Class,
+	#metaclass : #Class,
+	#indexInClassTable : 1083,
 	#category : #'Kernel-Collections-Ordered'
 }
 

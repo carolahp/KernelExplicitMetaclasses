@@ -1,21 +1,17 @@
 Class {
 	#name : #Class,
 	#superclass : #Behavior,
+	#role : 'Metaclass',
 	#instVars : [
 		'name',
 		'instVarNames',
-		'classVariables'
+		'classVariables',
+		'metaclass'
 	],
+	#metaclass : #Class,
+	#indexInClassTable : 1025,
 	#category : #'Kernel-Classes'
 }
-
-
-{ #category : #'as yet unclassified' }
-Class >> on: aCollection [
-	"Answer an instance of me initializing it by sending on:"
-
-	^ self basicNew on: aCollection
-]
 
 { #category : #'as yet unclassified' }
 Class >> cannotInstantiate [
@@ -41,6 +37,11 @@ Class >> classVariables: aDictionary [
 	"Answer the dictionary of class variables that I share with my sole instance, or nil if I have none."
 
 	^ classVariables := aDictionary
+]
+
+{ #category : #'as yet unclassified' }
+Class >> entryPoint [ 
+	Class start
 ]
 
 { #category : #'as yet unclassified' }
@@ -106,6 +107,18 @@ Class >> newClassBuilderForSubclass: subclassName instanceVariableNames: instVar
 		instVarNames: instVarNames;
 		classVariableNames: classVarNames;
 		yourself
+]
+
+{ #category : #'as yet unclassified' }
+Class >> on: aCollection [
+	"Answer an instance of me initializing it by sending on:"
+
+	^ self basicNew on: aCollection
+]
+
+{ #category : #'as yet unclassified' }
+Class >> start [ 
+	System log: 'hola asdasd!'. System quit.
 ]
 
 { #category : #'as yet unclassified' }

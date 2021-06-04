@@ -1,7 +1,9 @@
 Class {
 	#name : #Integer,
-	#metaclass : #IntegerMeta,
 	#superclass : #Number,
+	#role : 'Integer',
+	#metaclass : #IntegerMeta,
+	#indexInClassTable : 1031,
 	#category : #'Kernel-Numeric'
 }
 

@@ -1,8 +1,10 @@
 Class {
 	#name : #ByteArray,
 	#superclass : #ArrayedCollection,
-	#metaclass : #Class,
+	#role : 'ByteArray',
 	#type : #bytes,
+	#metaclass : #Class,
+	#indexInClassTable : 50,
 	#category : #'Kernel-Collections-Ordered'
 }
 

@@ -1,11 +1,13 @@
 Class {
 	#name : #Association,
 	#superclass : #Magnitude,
+	#role : 'Association',
 	#instVars : [
 		'key',
 		'value'
 	],
 	#metaclass : #AssociationMeta,
+	#indexInClassTable : 1064,
 	#category : #'Kernel-Collections-Unordered'
 }
 

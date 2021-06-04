@@ -1,11 +1,12 @@
 Class {
 	#name : #LinkedList,
 	#superclass : #SequenceableCollection,
-	#metaclass : #LinkedListMeta,
 	#instVars : [
 		'firstLink',
 		'lastLink'
 	],
+	#metaclass : #LinkedListMeta,
+	#indexInClassTable : 1078,
 	#category : #'Kernel-Collections-Ordered'
 }
 

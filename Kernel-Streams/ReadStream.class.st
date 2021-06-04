@@ -6,6 +6,8 @@ Class {
 		'position',
 		'readLimit'
 	],
+	#metaclass : #Class,
+	#indexInClassTable : 1082,
 	#category : #'Kernel-Streams'
 }
 

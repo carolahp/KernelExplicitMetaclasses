@@ -1,6 +1,11 @@
 Class {
 	#name : #StringMeta,
 	#superclass : #ArrayedCollectionMeta,
+	#instVars : [
+		'UppercasingTable'
+	],
+	#metaclass : #Class,
+	#indexInClassTable : 1069,
 	#category : #'Kernel-Collections-Ordered'
 }
 
@@ -12,14 +17,10 @@ StringMeta >> cr [
 ]
 
 { #category : #'as yet unclassified' }
-StringMeta >> new: size [
-	"Answer a string containing a carriage return character."
-
-	^ ByteString basicNew: size
-]
-
-{ #category : #'as yet unclassified' }
 StringMeta >> initialize [
+	UppercasingTable := ((0 to: 255)
+		collect: [ :i | i asCharacter asUppercase ]) asString
+		
 	"self initialize"
 
 "	| order |
@@ -51,4 +52,16 @@ StringMeta >> initialize [
 		ifFalse: [ self error: 'order problem' ].
 	LowercasingTable := ((0 to: 255)
 		collect: [ :i | i asCharacter asLowercase ]) asString"
+]
+
+{ #category : #'as yet unclassified' }
+StringMeta >> new: size [
+	"Answer a string containing a carriage return character."
+
+	^ ByteString basicNew: size
+]
+
+{ #category : #'as yet unclassified' }
+StringMeta >> uppercasingTable [
+	^ UppercasingTable
 ]

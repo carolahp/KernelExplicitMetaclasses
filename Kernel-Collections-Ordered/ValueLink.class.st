@@ -6,6 +6,7 @@ Class {
 		'value'
 	],
 	#metaclass : #ValueLinkMeta,
+	#indexInClassTable : 1086,
 	#category : #'Kernel-Collections-Ordered'
 }
 

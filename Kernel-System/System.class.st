@@ -1,6 +1,7 @@
 Class {
 	#name : #System,
-	#metaclass : #SystemMeta,
 	#superclass : #Object,
+	#metaclass : #SystemMeta,
+	#indexInClassTable : 1087,
 	#category : #'Kernel-System'
 }

@@ -1,13 +1,9 @@
 Class {
 	#name : #String,
 	#superclass : #ArrayedCollection,
+	#role : 'String',
 	#metaclass : #StringMeta,
-	#classVars : [
-		'AsciiOrder',
-		'CaseInsensitiveOrder',
-		'CaseSensitiveOrder',
-		'LowercasingTable'
-	],
+	#indexInClassTable : 1070,
 	#category : #'Kernel-Collections-Ordered'
 }
 
@@ -93,6 +89,20 @@ String >> asSymbol [
 			self = sym
 				ifTrue: [ ^ sym ] ].
 	^ (Symbol basicNew: self size) initFrom: self
+]
+
+{ #category : #'as yet unclassified' }
+String >> asUppercase [
+	"Answer a String made up from the receiver whose characters are all lowercase."
+
+	| result |
+	result := self copy asString.
+	self
+		translate: result
+		from: 1
+		to: result size
+		table: String uppercasingTable.
+	^ result
 ]
 
 { #category : #'as yet unclassified' }
@@ -347,6 +357,6 @@ String >> substrings [
 String >> translate: aString from: start to: stop table: table [
 	"Translate the characters in the given string in place using the given mapping table."
 
-	<primitive: 243>
+	"<primitive: 243>"
 	start to: stop do: [ :i | aString at: i put: (table at: (aString at: i) asciiValue + 1) ]
 ]

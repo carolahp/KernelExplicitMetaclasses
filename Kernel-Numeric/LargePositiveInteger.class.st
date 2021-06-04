@@ -1,7 +1,10 @@
 Class {
 	#name : #LargePositiveInteger,
 	#superclass : #Integer,
+	#role : 'LargePositiveInteger',
 	#type : #bytes,
+	#metaclass : #Class,
+	#indexInClassTable : 33,
 	#category : #'Kernel-Numeric'
 }
 

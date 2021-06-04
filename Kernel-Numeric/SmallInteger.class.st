@@ -1,8 +1,10 @@
 Class {
 	#name : #SmallInteger,
-	#metaclass : #SmallIntegerMeta,
 	#superclass : #Integer,
+	#role : 'SmallInteger',
 	#type : #immediate,
+	#metaclass : #SmallIntegerMeta,
+	#indexInClassTable : 1,
 	#category : #'Kernel-Numeric'
 }
 

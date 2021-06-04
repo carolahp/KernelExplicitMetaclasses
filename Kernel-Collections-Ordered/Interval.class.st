@@ -1,12 +1,13 @@
 Class {
 	#name : #Interval,
 	#superclass : #SequenceableCollection,
-	#metaclass : #IntervalMeta,
 	#instVars : [
 		'start',
 		'stop',
 		'step'
 	],
+	#metaclass : #IntervalMeta,
+	#indexInClassTable : 1084,
 	#category : #'Kernel-Collections-Ordered'
 }
 

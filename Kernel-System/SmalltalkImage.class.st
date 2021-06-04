@@ -1,13 +1,22 @@
 Class {
 	#name : #SmalltalkImage,
-	#role : #SmalltalkImage,
 	#superclass : #Object,
-	#instVars : [ 
+	#role : 'SmalltalkImage',
+	#instVars : [
 		'globals',
-		'specialObjectsArray' 
+		'specialObjectsArray'
 	],
+	#metaclass : #Class,
+	#indexInClassTable : 1055,
 	#category : #'Kernel-System'
 }
+
+{ #category : #'as yet unclassified' }
+SmalltalkImage >> at: aKey [
+	"Answer the global associated with the key."
+
+	^globals at: aKey
+]
 
 { #category : #'as yet unclassified' }
 SmalltalkImage >> globals [
@@ -27,10 +36,4 @@ SmalltalkImage >> specialObjectsArray [
 { #category : #'as yet unclassified' }
 SmalltalkImage >> specialObjectsArray: anArray [
 	specialObjectsArray := anArray
-]
-
-SmalltalkImage >> at: aKey [
-	"Answer the global associated with the key."
-
-	^globals at: aKey
 ]

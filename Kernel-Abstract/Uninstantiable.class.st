@@ -1,6 +1,8 @@
 Class {
 	#name : #Uninstantiable,
 	#superclass : #Class,
+	#metaclass : #Class,
+	#indexInClassTable : 1026,
 	#category : #'Kernel-Abstract'
 }
 

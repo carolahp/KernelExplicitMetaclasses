@@ -6,6 +6,8 @@ Class {
 		'methodDict',
 		'format'
 	],
+	#metaclass : #Class,
+	#indexInClassTable : 1071,
 	#category : #'Kernel-Classes'
 }
 

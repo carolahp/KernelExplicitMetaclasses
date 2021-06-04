@@ -1,6 +1,8 @@
 Class {
 	#name : #SetMeta,
 	#superclass : #Class,
+	#metaclass : #Class,
+	#indexInClassTable : 1036,
 	#category : #'Kernel-Collections-Unordered'
 }
 

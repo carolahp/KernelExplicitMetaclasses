@@ -1,7 +1,9 @@
 Class {
 	#name : #UndefinedObject,
-	#metaclass : #Uninstantiable,
 	#superclass : #Object,
+	#role : 'UndefinedObject',
+	#metaclass : #Uninstantiable,
+	#indexInClassTable : 1052,
 	#category : #'Kernel-Objects'
 }
 

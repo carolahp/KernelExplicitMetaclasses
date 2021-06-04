@@ -1,6 +1,8 @@
 Class {
 	#name : #MethodDictionaryMeta,
 	#superclass : #SetMeta,
+	#metaclass : #Class,
+	#indexInClassTable : 1066,
 	#category : #'Kernel-Methods'
 }
 

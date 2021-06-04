@@ -1,7 +1,9 @@
 Class {
 	#name : #True,
-	#metaclass : #Uninstantiable,
 	#superclass : #Object,
+	#role : 'True',
+	#metaclass : #Uninstantiable,
+	#indexInClassTable : 1035,
 	#category : #'Kernel-Objects'
 }
 

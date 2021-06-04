@@ -1,8 +1,10 @@
 Class {
 	#name : #Character,
 	#superclass : #Magnitude,
-	#metaclass : #CharacterMeta,
+	#role : 'Character',
 	#type : #immediate,
+	#metaclass : #CharacterMeta,
+	#indexInClassTable : 2,
 	#category : #'Kernel-Numeric'
 }
 

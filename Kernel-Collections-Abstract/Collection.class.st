@@ -1,7 +1,8 @@
 Class {
 	#name : #Collection,
-	#metaclass : #CollectionMeta,
 	#superclass : #Object,
+	#metaclass : #CollectionMeta,
+	#indexInClassTable : 1080,
 	#category : #'Kernel-Collections-Abstract'
 }
 
@@ -42,6 +43,13 @@ Collection >> asSet [
 	aSet := Set new: self size.
 	self do: [ :each | aSet add: each ].
 	^ aSet
+]
+
+{ #category : #'as yet unclassified' }
+Collection >> average [
+	"Calculate the average of a collection, return a CollectionIsEmpty exception if the collection is empty. Look averageIfEmpty: aBlock"
+	
+	^ self sum / self size
 ]
 
 { #category : #'as yet unclassified' }
@@ -177,11 +185,4 @@ Collection >> sum [
 	total := seed := self detect: [ :x | true ] ifNone: [ ^ 0 ].
 	self do: [ :el | total := total + el ].
 	^ total - seed	"subtract the seed value from the total"
-]
-
-{ #category : #'as yet unclassified' }
-Collection >> average [
-	"Calculate the average of a collection, return a CollectionIsEmpty exception if the collection is empty. Look averageIfEmpty: aBlock"
-	
-	^ self sum / self size
 ]

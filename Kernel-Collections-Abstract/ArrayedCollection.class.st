@@ -1,7 +1,9 @@
 Class {
 	#name : #ArrayedCollection,
-	#metaclass : #ArrayedCollectionMeta,
 	#superclass : #SequenceableCollection,
+	#role : 'ArrayedCollection',
+	#metaclass : #ArrayedCollectionMeta,
+	#indexInClassTable : 1041,
 	#category : #'Kernel-Collections-Abstract'
 }
 

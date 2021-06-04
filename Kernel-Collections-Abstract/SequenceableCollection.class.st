@@ -1,6 +1,8 @@
 Class {
 	#name : #SequenceableCollection,
 	#superclass : #Collection,
+	#metaclass : #Class,
+	#indexInClassTable : 1074,
 	#category : #'Kernel-Collections-Abstract'
 }
 

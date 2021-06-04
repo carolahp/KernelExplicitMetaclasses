@@ -1,6 +1,8 @@
 Class {
 	#name : #LinkedListMeta,
 	#superclass : #Class,
+	#metaclass : #Class,
+	#indexInClassTable : 1077,
 	#category : #'Kernel-Collections-Ordered'
 }
 
