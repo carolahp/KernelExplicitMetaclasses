@@ -2,6 +2,7 @@ Class {
 	#name : #UndefinedObject,
 	#metaclass : #Uninstantiable,
 	#superclass : #Object,
+	#role: 'UndefinedObject',
 	#category : #'Kernel-Objects'
 }
 

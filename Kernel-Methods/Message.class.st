@@ -6,6 +6,7 @@ Class {
 		'arguments',
 		'lookupClass'
 	],
+	#role: 'Message',
 	#category : #'Kernel-Methods'
 }
 

@@ -3,6 +3,7 @@ Class {
 	#superclass : #Number,
 	#type : #words,
 	#metaclass : #FloatMeta,
+	#role: 'Float',
 	#category : #'Kernel-Numeric'
 }
 

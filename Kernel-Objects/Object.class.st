@@ -1,6 +1,7 @@
 Class {
 	#name : #Object,
 	#superclass : #nil,
+	#role: 'ProtoObject',
 	#category : #'Kernel-Objects'
 }
 

@@ -3,6 +3,7 @@ Class {
 	#superclass : #Dictionary,
 	#metaclass : #MethodDictionaryMeta,
 	#type : #variable,
+	#role: 'MethodDictionary',
 	#category : #'Kernel-Methods'
 }
 

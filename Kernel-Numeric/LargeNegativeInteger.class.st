@@ -2,6 +2,7 @@ Class {
 	#name : #LargeNegativeInteger,
 	#superclass : #LargePositiveInteger,
 	#type : #bytes,
+	#role: 'LargeNegativeInteger',
 	#category : #'Kernel-Numeric'
 }
 

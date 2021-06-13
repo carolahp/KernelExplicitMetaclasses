@@ -6,6 +6,7 @@ Class {
 		'instVarNames',
 		'classVariables'
 	],
+	#role: 'Metaclass',
 	#category : #'Kernel-Classes'
 }
 

@@ -2,6 +2,7 @@ Class {
 	#name : #Array,
 	#superclass : #ArrayedCollection,
 	#type : #variable,
+	#role: 'Array',
 	#category : #'Kernel-Collections-Ordered'
 }
 

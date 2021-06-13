@@ -2,6 +2,7 @@ Class {
 	#name : #Dictionary,
 	#superclass : #Set,
 	#metaclass : #SetMeta,
+	#role: 'Dictionary',
 	#category : #'Kernel-Collections-Unordered'
 }
 

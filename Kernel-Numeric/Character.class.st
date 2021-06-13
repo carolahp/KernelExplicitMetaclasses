@@ -3,6 +3,7 @@ Class {
 	#superclass : #Magnitude,
 	#metaclass : #CharacterMeta,
 	#type : #immediate,
+	#role: 'Character',
 	#category : #'Kernel-Numeric'
 }
 

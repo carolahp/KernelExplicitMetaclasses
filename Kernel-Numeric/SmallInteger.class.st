@@ -3,6 +3,7 @@ Class {
 	#metaclass : #SmallIntegerMeta,
 	#superclass : #Integer,
 	#type : #immediate,
+	#role: 'SmallInteger',
 	#category : #'Kernel-Numeric'
 }
 

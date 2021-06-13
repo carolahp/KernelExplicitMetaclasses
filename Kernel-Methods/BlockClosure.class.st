@@ -7,6 +7,7 @@ Class {
 		'startpc',
 		'nargs'
 	],
+	#role: 'BlockClosure',
 	#category : #'Kernel-Methods'
 }
 

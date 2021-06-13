@@ -2,6 +2,7 @@ Class {
 	#name : #CompiledMethod,
 	#superclass : #ByteArray,
 	#type : #compiledMethod,
+	#role: 'CompiledMethod',
 	#category : #'Kernel-Methods'
 }
 

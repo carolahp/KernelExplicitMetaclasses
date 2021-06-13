@@ -11,6 +11,7 @@ Class {
 		'closureOrNil',
 		'receiver'
 	],
+	#role: 'Context',
 	#category : #'Kernel-Methods'
 }
 

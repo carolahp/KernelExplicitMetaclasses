@@ -3,6 +3,7 @@ Class {
 	#superclass : #String,
 	#metaclass : #ByteSymbolMeta,
 	#type : #bytes,
+	#role: 'ByteSymbol',
 	#category : #'Kernel-Collections-Ordered'
 }
 

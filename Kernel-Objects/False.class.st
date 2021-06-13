@@ -1,6 +1,7 @@
 Class {
 	#name : #False,
 	#superclass : #True,
+	#role: 'False',
 	#category : #'Kernel-Objects'
 }
 

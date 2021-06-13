@@ -3,6 +3,7 @@ Class {
 	#superclass : #ArrayedCollection,
 	#metaclass : #Class,
 	#type : #bytes,
+	#role: 'ByteArray',
 	#category : #'Kernel-Collections-Ordered'
 }
 
