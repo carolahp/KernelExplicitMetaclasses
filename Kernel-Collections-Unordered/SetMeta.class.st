@@ -2,7 +2,6 @@ Class {
 	#name : #SetMeta,
 	#superclass : #Class,
 	#metaclass : #Class,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Collections-Unordered'
 }
 

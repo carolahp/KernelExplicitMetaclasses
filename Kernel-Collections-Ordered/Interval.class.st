@@ -7,7 +7,6 @@ Class {
 		'step'
 	],
 	#metaclass : #IntervalMeta,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Collections-Ordered'
 }
 

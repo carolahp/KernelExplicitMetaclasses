@@ -7,7 +7,6 @@ Class {
 		'name'
 	],
 	#metaclass : #Class,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Classes'
 }
 

@@ -4,6 +4,5 @@ Class {
 	#role : 'ByteString',
 	#type : #bytes,
 	#metaclass : #ByteStringMeta,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Collections-Ordered'
 }

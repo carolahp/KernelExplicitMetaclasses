@@ -7,7 +7,6 @@ Class {
 		'lastIndex'
 	],
 	#metaclass : #OrderedCollectionMeta,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Collections-Ordered'
 }
 

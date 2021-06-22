@@ -7,7 +7,6 @@ Class {
 		'activeProcess'
 	],
 	#metaclass : #Uninstantiable,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Processes'
 }
 

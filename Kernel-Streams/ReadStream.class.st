@@ -7,7 +7,6 @@ Class {
 		'readLimit'
 	],
 	#metaclass : #Class,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Streams'
 }
 

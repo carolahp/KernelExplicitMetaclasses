@@ -8,7 +8,6 @@ Class {
 		'lookupClass'
 	],
 	#metaclass : #Class,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Methods'
 }
 

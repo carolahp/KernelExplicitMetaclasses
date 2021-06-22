@@ -2,7 +2,6 @@ Class {
 	#name : #ArrayedCollectionMeta,
 	#superclass : #Class,
 	#metaclass : #Class,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Collections-Abstract'
 }
 

@@ -4,7 +4,6 @@ Class {
 	#role : 'Character',
 	#type : #immediate,
 	#metaclass : #CharacterMeta,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Numeric'
 }
 

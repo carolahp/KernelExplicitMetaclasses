@@ -7,7 +7,6 @@ Class {
 		'value'
 	],
 	#metaclass : #AssociationMeta,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Collections-Unordered'
 }
 

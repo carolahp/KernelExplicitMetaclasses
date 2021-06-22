@@ -2,7 +2,6 @@ Class {
 	#name : #FloatMeta,
 	#superclass : #NumberMeta,
 	#metaclass : #Class,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Numeric'
 }
 

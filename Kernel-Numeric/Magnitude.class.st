@@ -2,7 +2,6 @@ Class {
 	#name : #Magnitude,
 	#superclass : #Object,
 	#metaclass : #Class,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Numeric'
 }
 

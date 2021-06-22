@@ -6,7 +6,6 @@ Class {
 		'fileID'
 	],
 	#metaclass : #Class,
-	#indexInClassTable : nil,
 	#category : #'Kernel-IO'
 }
 

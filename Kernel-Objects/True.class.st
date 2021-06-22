@@ -3,7 +3,6 @@ Class {
 	#superclass : #Object,
 	#role : 'True',
 	#metaclass : #Uninstantiable,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Objects'
 }
 

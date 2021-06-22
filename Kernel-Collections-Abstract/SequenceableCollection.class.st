@@ -2,7 +2,6 @@ Class {
 	#name : #SequenceableCollection,
 	#superclass : #Collection,
 	#metaclass : #Class,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Collections-Abstract'
 }
 

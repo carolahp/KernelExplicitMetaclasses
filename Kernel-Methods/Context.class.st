@@ -12,7 +12,6 @@ Class {
 		'receiver'
 	],
 	#metaclass : #ContextMeta,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Methods'
 }
 

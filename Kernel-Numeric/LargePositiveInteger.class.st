@@ -4,7 +4,6 @@ Class {
 	#role : 'LargePositiveInteger',
 	#type : #bytes,
 	#metaclass : #Class,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Numeric'
 }
 

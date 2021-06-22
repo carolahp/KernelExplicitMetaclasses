@@ -2,7 +2,6 @@ Class {
 	#name : #IdentityDictionary,
 	#superclass : #Dictionary,
 	#metaclass : #SetMeta,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Collections-Unordered'
 }
 

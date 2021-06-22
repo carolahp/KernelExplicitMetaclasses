@@ -3,7 +3,6 @@ Class {
 	#superclass : #Context,
 	#type : #variable,
 	#metaclass : #Class,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Methods'
 }
 

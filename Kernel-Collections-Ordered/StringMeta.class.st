@@ -2,7 +2,6 @@ Class {
 	#name : #StringMeta,
 	#superclass : #ArrayedCollectionMeta,
 	#metaclass : #Class,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Collections-Ordered'
 }
 

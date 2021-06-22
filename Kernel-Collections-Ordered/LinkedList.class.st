@@ -6,7 +6,6 @@ Class {
 		'lastLink'
 	],
 	#metaclass : #LinkedListMeta,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Collections-Ordered'
 }
 

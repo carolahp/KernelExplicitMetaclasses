@@ -5,7 +5,6 @@ Class {
 		'writeLimit'
 	],
 	#metaclass : #Class,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Streams'
 }
 

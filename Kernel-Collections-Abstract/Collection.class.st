@@ -2,7 +2,6 @@ Class {
 	#name : #Collection,
 	#superclass : #Object,
 	#metaclass : #CollectionMeta,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Collections-Abstract'
 }
 

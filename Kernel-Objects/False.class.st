@@ -3,7 +3,6 @@ Class {
 	#superclass : #True,
 	#role : 'False',
 	#metaclass : #Class,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Objects'
 }
 

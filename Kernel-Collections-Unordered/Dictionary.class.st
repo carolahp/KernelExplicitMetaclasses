@@ -3,7 +3,6 @@ Class {
 	#superclass : #Set,
 	#role : 'Dictionary',
 	#metaclass : #SetMeta,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Collections-Unordered'
 }
 

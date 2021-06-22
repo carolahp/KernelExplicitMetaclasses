@@ -11,7 +11,6 @@ Class {
 		'errorHandler'
 	],
 	#metaclass : #Class,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Processes'
 }
 

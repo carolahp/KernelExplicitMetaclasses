@@ -2,7 +2,6 @@ Class {
 	#name : #ContextMeta,
 	#superclass : #Class,
 	#metaclass : #Class,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Methods'
 }
 

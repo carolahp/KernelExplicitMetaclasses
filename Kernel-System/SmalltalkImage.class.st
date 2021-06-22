@@ -7,7 +7,6 @@ Class {
 		'specialObjectsArray'
 	],
 	#metaclass : #Class,
-	#indexInClassTable : nil,
 	#category : #'Kernel-System'
 }
 

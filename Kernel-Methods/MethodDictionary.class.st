@@ -4,7 +4,6 @@ Class {
 	#role : 'MethodDictionary',
 	#type : #variable,
 	#metaclass : #MethodDictionaryMeta,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Methods'
 }
 

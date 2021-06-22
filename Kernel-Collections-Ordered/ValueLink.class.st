@@ -6,7 +6,6 @@ Class {
 		'value'
 	],
 	#metaclass : #ValueLinkMeta,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Collections-Ordered'
 }
 

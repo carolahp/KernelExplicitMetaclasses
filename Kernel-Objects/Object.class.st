@@ -3,7 +3,6 @@ Class {
 	#superclass : #nil,
 	#role : 'ProtoObject',
 	#metaclass : #Class,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Objects'
 }
 

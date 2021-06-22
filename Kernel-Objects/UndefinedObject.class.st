@@ -3,7 +3,6 @@ Class {
 	#superclass : #Object,
 	#role : 'UndefinedObject',
 	#metaclass : #Uninstantiable,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Objects'
 }
 
@@ -12,6 +11,12 @@ UndefinedObject >> basicCopy [
 	"There is the only one instance of me, so answer myself."
 
 	^ self
+]
+
+{ #category : #'as yet unclassified' }
+UndefinedObject >> entryPoint [
+System log: 'hello world'. 
+        System quit.
 ]
 
 { #category : #'as yet unclassified' }

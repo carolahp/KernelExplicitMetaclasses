@@ -2,7 +2,6 @@ Class {
 	#name : #Uninstantiable,
 	#superclass : #Class,
 	#metaclass : #Class,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Abstract'
 }
 

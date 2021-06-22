@@ -4,7 +4,6 @@ Class {
 	#role : 'Float',
 	#type : #words,
 	#metaclass : #FloatMeta,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Numeric'
 }
 
@@ -132,11 +131,11 @@ Float >> Ln2^ [ 0.69314718055994530941723212145817657
 ]
 
 { #category : #'as yet unclassified' }
-Float >> MaxVal^ [ 1.7976931348623157e308
+Float >> MaxValLn^ [ 709.782712893384
 ]
 
 { #category : #'as yet unclassified' }
-Float >> MaxValLn^ [ 709.782712893384
+Float >> MaxVal^ [ 1.7976931348623157e308
 ]
 
 { #category : #'as yet unclassified' }

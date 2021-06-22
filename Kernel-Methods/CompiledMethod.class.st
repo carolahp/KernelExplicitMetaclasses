@@ -4,7 +4,6 @@ Class {
 	#role : 'CompiledMethod',
 	#type : #compiledMethod,
 	#metaclass : #Class,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Methods'
 }
 

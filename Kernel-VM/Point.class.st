@@ -7,6 +7,5 @@ Class {
 		'y'
 	],
 	#metaclass : #Class,
-	#indexInClassTable : nil,
 	#category : #'Kernel-VM'
 }

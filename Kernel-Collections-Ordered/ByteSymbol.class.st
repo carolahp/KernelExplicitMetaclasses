@@ -4,7 +4,6 @@ Class {
 	#role : 'ByteSymbol',
 	#type : #bytes,
 	#metaclass : #ByteSymbolMeta,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Collections-Ordered'
 }
 

@@ -4,7 +4,6 @@ Class {
 	#role : 'Array',
 	#type : #variable,
 	#metaclass : #Class,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Collections-Ordered'
 }
 

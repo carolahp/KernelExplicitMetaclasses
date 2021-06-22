@@ -10,7 +10,6 @@ Class {
 		'nargs'
 	],
 	#metaclass : #Class,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Methods'
 }
 

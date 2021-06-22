@@ -7,12 +7,12 @@ Class {
 		'format'
 	],
 	#metaclass : #Class,
-	#indexInClassTable : nil,
 	#category : #'Kernel-Classes'
 }
 
 { #category : #'as yet unclassified' }
 Behavior >> >> aSelector [
+	"a comment"
 	^ self methodDict at: aSelector
 ]
 
