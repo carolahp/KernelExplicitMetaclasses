@@ -1,12 +1,16 @@
 Class {
 	#name : #BlockClosure,
 	#superclass : #Object,
+	#role : 'BlockClosure',
 	#type : #variable,
 	#instVars : [
 		'outerContext',
 		'startpc',
+		'numArgs',
 		'nargs'
 	],
+	#metaclass : #Class,
+	#indexInClassTable : nil,
 	#category : #'Kernel-Methods'
 }
 
@@ -136,19 +140,21 @@ BlockClosure >> valueWithArguments: anArray [
 				error: 'This block requires ' , nargs printString , ' arguments.' ]
 ]
 
-BlockClosure >> whileTrue: aBlock [
-	"Ordinarily compiled in-line, and therefore not overridable.
-	This is in case the message is sent to other than a literal block.
-	Evaluate the argument, aBlock, as long as the value of the receiver is true."
-	self value ifTrue: [ aBlock value. self whileTrue: aBlock ].
-	^ nil
-]
-
+{ #category : #'as yet unclassified' }
 BlockClosure >> whileFalse: aBlock [
 	"Ordinarily compiled in-line, and therefore not overridable.
 	This is in case the message is sent to other than a literal block.
 	Evaluate the argument, aBlock, as long as the value of the receiver is false."
 
 	self value ifFalse: [ aBlock value. self whileFalse: aBlock ].
+	^ nil
+]
+
+{ #category : #'as yet unclassified' }
+BlockClosure >> whileTrue: aBlock [
+	"Ordinarily compiled in-line, and therefore not overridable.
+	This is in case the message is sent to other than a literal block.
+	Evaluate the argument, aBlock, as long as the value of the receiver is true."
+	self value ifTrue: [ aBlock value. self whileTrue: aBlock ].
 	^ nil
 ]

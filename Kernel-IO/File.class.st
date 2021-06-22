@@ -5,6 +5,8 @@ Class {
 		'name',
 		'fileID'
 	],
+	#metaclass : #Class,
+	#indexInClassTable : nil,
 	#category : #'Kernel-IO'
 }
 
@@ -20,6 +22,23 @@ File >> close [
 { #category : #'as yet unclassified' }
 File >> cr [
 	self nextPutAll: (String with: Character cr)
+]
+
+{ #category : #'as yet unclassified' }
+File >> imageName [
+	"Answer the name of the image file"
+
+	| imagePath delimiter i |
+	imagePath := self primImageName.
+	delimiter := $/.
+	(imagePath includes: delimiter)
+		ifFalse: [ delimiter := $\ ].
+	i := imagePath size.
+	[ i > 0 and: [ (imagePath at: i) ~= delimiter ] ]
+		whileTrue: [ i := i - 1 ].
+	i = 0
+		ifTrue: [ ^ '' ].
+	^ imagePath copyFrom: i to: imagePath size
 ]
 
 { #category : #'as yet unclassified' }
@@ -193,20 +212,4 @@ File >> size [
 	"Answer the size of this file in bytes."
 
 	^ self primSize: fileID
-]
-
-File >> imageName [
-	"Answer the name of the image file"
-
-	| imagePath delimiter i |
-	imagePath := self primImageName.
-	delimiter := $/.
-	(imagePath includes: delimiter)
-		ifFalse: [ delimiter := $\ ].
-	i := imagePath size.
-	[ i > 0 and: [ (imagePath at: i) ~= delimiter ] ]
-		whileTrue: [ i := i - 1 ].
-	i = 0
-		ifTrue: [ ^ '' ].
-	^ imagePath copyFrom: i to: imagePath size
 ]

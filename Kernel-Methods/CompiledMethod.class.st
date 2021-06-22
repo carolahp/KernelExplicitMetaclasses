@@ -1,9 +1,23 @@
 Class {
 	#name : #CompiledMethod,
 	#superclass : #ByteArray,
+	#role : 'CompiledMethod',
 	#type : #compiledMethod,
+	#metaclass : #Class,
+	#indexInClassTable : nil,
 	#category : #'Kernel-Methods'
 }
+
+{ #category : #'as yet unclassified' }
+CompiledMethod >> asString [
+	^ self printString
+]
+
+{ #category : #'as yet unclassified' }
+CompiledMethod >> classBinding [
+
+	^self literalAt: self numLiterals
+]
 
 { #category : #'as yet unclassified' }
 CompiledMethod >> frameSize [
@@ -33,6 +47,19 @@ CompiledMethod >> initialPC [
 { #category : #'as yet unclassified' }
 CompiledMethod >> isCompiledMethod [
 	^ true
+]
+
+{ #category : #'as yet unclassified' }
+CompiledMethod >> literalAt: index [
+	"Answer the literal indexed by the argument."
+
+	^self objectAt: index + 1
+]
+
+{ #category : #'as yet unclassified' }
+CompiledMethod >> methodClass [
+
+	^self classBinding value
 ]
 
 { #category : #'as yet unclassified' }
@@ -66,6 +93,27 @@ CompiledMethod >> objectAt: index put: value [
 	self primitiveFailed
 ]
 
+{ #category : #'as yet unclassified' }
+CompiledMethod >> penultimateLiteral [
+	"Answer the penultimate literal of the receiver, which holds either
+	 the receiver's selector or its properties (which will hold the selector)."
+	| pIndex |
+	^(pIndex := self numLiterals - 1) > 0 
+		ifTrue: [self literalAt: pIndex]
+		ifFalse: [nil]
+]
+
+{ #category : #'as yet unclassified' }
+CompiledMethod >> printOn: aStream [
+	"Overrides method inherited from the byte arrayed collection."
+
+	aStream 
+		nextPutAll: self methodClass asString; 
+		nextPutAll: '>>'; 
+		nextPutAll: self selector asString.
+]
+
+{ #category : #'as yet unclassified' }
 CompiledMethod >> selector [
 	"Answer a method's selector.  This is either the penultimate literal,
 	 or, if the method has any properties or pragmas, the selector of
@@ -76,43 +124,4 @@ CompiledMethod >> selector [
 	^ penultimateLiteral isSymbol
 		ifTrue: [penultimateLiteral]
 		ifFalse: [penultimateLiteral instVarAt: 2]
-]
-
-CompiledMethod >> penultimateLiteral [
-	"Answer the penultimate literal of the receiver, which holds either
-	 the receiver's selector or its properties (which will hold the selector)."
-	| pIndex |
-	^(pIndex := self numLiterals - 1) > 0 
-		ifTrue: [self literalAt: pIndex]
-		ifFalse: [nil]
-]
-
-CompiledMethod >> literalAt: index [
-	"Answer the literal indexed by the argument."
-
-	^self objectAt: index + 1
-]
-
-CompiledMethod >> printOn: aStream [
-	"Overrides method inherited from the byte arrayed collection."
-
-	aStream 
-		nextPutAll: self methodClass asString; 
-		nextPutAll: '>>'; 
-		nextPutAll: self selector asString.
-]
-
-CompiledMethod >> classBinding [
-
-	^self literalAt: self numLiterals
-]
-
-
-CompiledMethod >> methodClass [
-
-	^self classBinding value
-]
-
-CompiledMethod >> asString [
-	^ self printString
 ]

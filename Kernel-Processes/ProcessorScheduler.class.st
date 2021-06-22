@@ -1,11 +1,13 @@
 Class {
 	#name : #ProcessorScheduler,
 	#superclass : #Object,
-	#metaclass : #Uninstantiable,
+	#role : 'ProcessorScheduler',
 	#instVars : [
 		'suspendedProcessLists',
 		'activeProcess'
 	],
+	#metaclass : #Uninstantiable,
+	#indexInClassTable : nil,
 	#category : #'Kernel-Processes'
 }
 
@@ -14,6 +16,12 @@ ProcessorScheduler >> activeProcess [
 	"Answer the currently running Process."
 
 	^ activeProcess
+]
+
+{ #category : #'as yet unclassified' }
+ProcessorScheduler >> errorHandler [
+	System log: 'I am the error handler. I will save and quit'.
+	System snapshotAndQuit
 ]
 
 { #category : #'as yet unclassified' }
@@ -63,6 +71,11 @@ ProcessorScheduler >> installStartProcess [
 ]
 
 { #category : #'as yet unclassified' }
+ProcessorScheduler >> printOn: aStream [
+	aStream nextPutAll: 'a ProcessorScheduler!'
+]
+
+{ #category : #'as yet unclassified' }
 ProcessorScheduler >> remove: aProcess ifAbsent: aBlock [
 	"Remove the given process from the list on which it is waiting. If the process is not on the queue for it's priority, evaluate the given block. Always answer the process."
 
@@ -71,15 +84,3 @@ ProcessorScheduler >> remove: aProcess ifAbsent: aBlock [
 		ifAbsent: aBlock.
 	^ aProcess
 ]
-
-{ #category : #'as yet unclassified' }
-ProcessorScheduler >> printOn: aStream [
-	aStream nextPutAll: 'a ProcessorScheduler!'
-]
-
-{ #category : #'as yet unclassified' }
-ProcessorScheduler >> errorHandler [
-	System log: 'I am the error handler. I will save and quit'.
-	System snapshotAndQuit
-]
-

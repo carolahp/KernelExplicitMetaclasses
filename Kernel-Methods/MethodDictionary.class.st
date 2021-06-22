@@ -1,8 +1,10 @@
 Class {
 	#name : #MethodDictionary,
 	#superclass : #Dictionary,
-	#metaclass : #MethodDictionaryMeta,
+	#role : 'MethodDictionary',
 	#type : #variable,
+	#metaclass : #MethodDictionaryMeta,
+	#indexInClassTable : nil,
 	#category : #'Kernel-Methods'
 }
 

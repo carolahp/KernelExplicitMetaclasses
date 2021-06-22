@@ -1,10 +1,13 @@
 Class {
 	#name : #ProcessList,
 	#superclass : #SequenceableCollection,
+	#role : 'ProcessList',
 	#instVars : [
 		'firstLink',
 		'lastLink'
 	],
+	#metaclass : #Class,
+	#indexInClassTable : nil,
 	#category : #'Kernel-Processes'
 }
 

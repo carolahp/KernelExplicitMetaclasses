@@ -2,12 +2,7 @@ Class {
 	#name : #String,
 	#superclass : #ArrayedCollection,
 	#metaclass : #StringMeta,
-	#classVars : [
-		'AsciiOrder',
-		'CaseInsensitiveOrder',
-		'CaseSensitiveOrder',
-		'LowercasingTable'
-	],
+	#indexInClassTable : nil,
 	#category : #'Kernel-Collections-Ordered'
 }
 

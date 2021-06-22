@@ -4,6 +4,8 @@ Class {
 	#instVars : [
 		'writeLimit'
 	],
+	#metaclass : #Class,
+	#indexInClassTable : nil,
 	#category : #'Kernel-Streams'
 }
 

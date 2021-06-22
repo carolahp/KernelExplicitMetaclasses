@@ -1,6 +1,8 @@
 Class {
 	#name : #StringMeta,
 	#superclass : #ArrayedCollectionMeta,
+	#metaclass : #Class,
+	#indexInClassTable : nil,
 	#category : #'Kernel-Collections-Ordered'
 }
 
@@ -9,13 +11,6 @@ StringMeta >> cr [
 	"Answer a string containing a carriage return character."
 
 	^ self with: Character cr
-]
-
-{ #category : #'as yet unclassified' }
-StringMeta >> new: size [
-	"Answer a string containing a carriage return character."
-
-	^ ByteString basicNew: size
 ]
 
 { #category : #'as yet unclassified' }
@@ -51,4 +46,11 @@ StringMeta >> initialize [
 		ifFalse: [ self error: 'order problem' ].
 	LowercasingTable := ((0 to: 255)
 		collect: [ :i | i asCharacter asLowercase ]) asString"
+]
+
+{ #category : #'as yet unclassified' }
+StringMeta >> new: size [
+	"Answer a string containing a carriage return character."
+
+	^ ByteString basicNew: size
 ]

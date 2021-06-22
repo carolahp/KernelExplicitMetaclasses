@@ -1,6 +1,9 @@
 Class {
 	#name : #False,
 	#superclass : #True,
+	#role : 'False',
+	#metaclass : #Class,
+	#indexInClassTable : nil,
 	#category : #'Kernel-Objects'
 }
 

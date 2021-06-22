@@ -1,7 +1,9 @@
 Class {
 	#name : #Dictionary,
 	#superclass : #Set,
+	#role : 'Dictionary',
 	#metaclass : #SetMeta,
+	#indexInClassTable : nil,
 	#category : #'Kernel-Collections-Unordered'
 }
 

@@ -6,6 +6,7 @@ Class {
 		'array'
 	],
 	#metaclass : #SetMeta,
+	#indexInClassTable : nil,
 	#category : #'Kernel-Collections-Unordered'
 }
 

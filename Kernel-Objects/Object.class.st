@@ -1,6 +1,9 @@
 Class {
 	#name : #Object,
 	#superclass : #nil,
+	#role : 'ProtoObject',
+	#metaclass : #Class,
+	#indexInClassTable : nil,
 	#category : #'Kernel-Objects'
 }
 
@@ -219,6 +222,13 @@ Object >> errorNonIntegerIndex [
 ]
 
 { #category : #'as yet unclassified' }
+Object >> errorNotIndexable [
+	"Create an error notification that the receiver is not indexable."
+
+	self error: ('Instances of ' , self class name, ' are not indexable. (I am ', self asString,')')
+]
+
+{ #category : #'as yet unclassified' }
 Object >> errorSubscriptBounds: index [
 	"Error: the given index is out of range."
 
@@ -375,6 +385,11 @@ Object >> isSmallInteger [
 ]
 
 { #category : #'as yet unclassified' }
+Object >> isSymbol [
+	^ false
+]
+
+{ #category : #'as yet unclassified' }
 Object >> mustBeBoolean [
 	"Error: attempt to use a non-Boolean object as if it were true or false. This message is sent by the virtual machine."
 
@@ -525,6 +540,17 @@ Object >> respondsTo: aSymbol [
 ]
 
 { #category : #'as yet unclassified' }
+Object >> setPinnedInMemory: aBoolean [
+	"The VM's garbage collector routinely moves objects as it reclaims and compacts
+	 memory. But it can also pin an object so that it will not be moved around in memory,
+    while still being reclamable by the garbage collector. This can make
+	 it easier to pass objects out through the FFI. Objects are unpinnned when created.
+	 This primitive either pins or unpins an object, and answers if it was already pinned."
+	<primitive: 184 error: ec>
+	^self primitiveFailed
+]
+
+{ #category : #'as yet unclassified' }
 Object >> shouldBePrintedAsLiteral [
 	^ false
 ]
@@ -600,25 +626,4 @@ Object >> ~~ anObject [
 	^ self == anObject
 		ifTrue: [ false ]
 		ifFalse: [ true ]
-]
-
-{ #category : #'as yet unclassified' }
-Object >> isSymbol [
-	^ false
-]
-
-Object >> errorNotIndexable [
-	"Create an error notification that the receiver is not indexable."
-
-	self error: ('Instances of ' , self class name, ' are not indexable. (I am ', self asString,')')
-]
-
-Object >> setPinnedInMemory: aBoolean [
-	"The VM's garbage collector routinely moves objects as it reclaims and compacts
-	 memory. But it can also pin an object so that it will not be moved around in memory,
-    while still being reclamable by the garbage collector. This can make
-	 it easier to pass objects out through the FFI. Objects are unpinnned when created.
-	 This primitive either pins or unpins an object, and answers if it was already pinned."
-	<primitive: 184 error: ec>
-	^self primitiveFailed
 ]

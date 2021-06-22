@@ -1,6 +1,8 @@
 Class {
 	#name : #ByteSymbolMeta,
 	#superclass : #StringMeta,
+	#metaclass : #Class,
+	#indexInClassTable : nil,
 	#category : #'Kernel-Collections-Ordered'
 }
 

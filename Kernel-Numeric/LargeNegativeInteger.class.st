@@ -1,7 +1,10 @@
 Class {
 	#name : #LargeNegativeInteger,
 	#superclass : #LargePositiveInteger,
+	#role : 'LargeNegativeInteger',
 	#type : #bytes,
+	#metaclass : #Class,
+	#indexInClassTable : nil,
 	#category : #'Kernel-Numeric'
 }
 

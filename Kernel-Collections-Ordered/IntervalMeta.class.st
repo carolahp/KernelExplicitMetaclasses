@@ -1,6 +1,8 @@
 Class {
 	#name : #IntervalMeta,
 	#superclass : #Class,
+	#metaclass : #Class,
+	#indexInClassTable : nil,
 	#category : #'Kernel-Collections-Ordered'
 }
 

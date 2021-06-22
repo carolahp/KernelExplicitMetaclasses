@@ -1,6 +1,8 @@
 Class {
 	#name : #IntegerMeta,
 	#superclass : #NumberMeta,
+	#metaclass : #Class,
+	#indexInClassTable : nil,
 	#category : #'Kernel-Numeric'
 }
 

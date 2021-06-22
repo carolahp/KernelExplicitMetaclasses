@@ -1,7 +1,7 @@
 Class {
 	#name : #Context,
-	#metaclass : #ContextMeta,
 	#superclass : #Object,
+	#role : 'Context',
 	#type : #variable,
 	#instVars : [
 		'sender',
@@ -11,6 +11,8 @@ Class {
 		'closureOrNil',
 		'receiver'
 	],
+	#metaclass : #ContextMeta,
+	#indexInClassTable : nil,
 	#category : #'Kernel-Methods'
 }
 
@@ -26,29 +28,15 @@ Context >> blockCopy: numArgs [
 ]
 
 { #category : #'as yet unclassified' }
+Context >> callStack [
+	^ self sender isNil 
+		ifTrue:  [{ self } asOrderedCollection]
+		ifFalse: [{ self } asOrderedCollection addAll: self sender callStack; yourself]
+]
+
+{ #category : #'as yet unclassified' }
 Context >> isContextPart [
 	^ true
-]
-
-{ #category : #'as yet unclassified' }
-Context >> sender [
-	"Answer the context that sent the message that created the receiver."
-
-	^ sender
-]
-
-{ #category : #'as yet unclassified' }
-Context >> receiver [
-	"Answer the context that sent the message that created the receiver."
-
-	^ receiver
-]
-
-{ #category : #'as yet unclassified' }
-Context >> receiver [
-	"Answer the context that sent the message that created the receiver."
-
-	^ receiver
 ]
 
 { #category : #'as yet unclassified' }
@@ -68,12 +56,21 @@ Context >> printOn: aStream [
 		nextPutAll: self method selector asString
 ]
 
-Context >> callStack [
-	^ self sender isNil 
-		ifTrue:  [{ self } asOrderedCollection]
-		ifFalse: [{ self } asOrderedCollection addAll: self sender callStack; yourself]
+{ #category : #'as yet unclassified' }
+Context >> receiver [
+	"Answer the context that sent the message that created the receiver."
+
+	^ receiver
 ]
 
+{ #category : #'as yet unclassified' }
+Context >> sender [
+	"Answer the context that sent the message that created the receiver."
+
+	^ sender
+]
+
+{ #category : #'as yet unclassified' }
 Context >> stringCallStack [
 	| stream |
 	stream := WriteStream on: (String new: 100).

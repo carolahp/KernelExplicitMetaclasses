@@ -1,6 +1,8 @@
 Class {
 	#name : #CharacterMeta,
 	#superclass : #Class,
+	#metaclass : #Class,
+	#indexInClassTable : nil,
 	#category : #'Kernel-Numeric'
 }
 

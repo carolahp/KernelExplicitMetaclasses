@@ -1,7 +1,10 @@
 Class {
 	#name : #Array,
 	#superclass : #ArrayedCollection,
+	#role : 'Array',
 	#type : #variable,
+	#metaclass : #Class,
+	#indexInClassTable : nil,
 	#category : #'Kernel-Collections-Ordered'
 }
 
@@ -19,6 +22,11 @@ Array >> asDictionary [
 	dictionary := Dictionary new.
 	self do: [ :each | dictionary add: each ].
 	^ dictionary
+]
+
+{ #category : #'as yet unclassified' }
+Array >> asOrderedCollection [
+	^ OrderedCollection newFrom: self
 ]
 
 { #category : #'as yet unclassified' }
@@ -58,7 +66,4 @@ Array >> replaceFrom: start to: stop with: replacement startingAt: repStart [
 		to: stop
 		with: replacement
 		startingAt: repStart
-]
-Array >> asOrderedCollection [
-	^ OrderedCollection newFrom: self
 ]

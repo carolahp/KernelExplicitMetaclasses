@@ -1,8 +1,10 @@
 Class {
 	#name : #ByteSymbol,
 	#superclass : #String,
-	#metaclass : #ByteSymbolMeta,
+	#role : 'ByteSymbol',
 	#type : #bytes,
+	#metaclass : #ByteSymbolMeta,
+	#indexInClassTable : nil,
 	#category : #'Kernel-Collections-Ordered'
 }
 
@@ -69,6 +71,11 @@ ByteSymbol >> initFrom: aString [
 ]
 
 { #category : #'as yet unclassified' }
+ByteSymbol >> isSymbol [
+	^ true
+]
+
+{ #category : #'as yet unclassified' }
 ByteSymbol >> printOn: aStream [
 	aStream nextPutAll: self
 ]
@@ -82,9 +89,3 @@ ByteSymbol >> replaceFrom: start to: stop with: replacement startingAt: repStart
 ByteSymbol >> species [
 	^ String
 ]
-
-{ #category : #'as yet unclassified' }
-ByteSymbol >> isSymbol [
-	^ true
-]
-
