@@ -3,6 +3,7 @@ Class {
 	#superclass : #ByteArray,
 	#role : 'CompiledMethod',
 	#type : #compiledMethod,
+	#instVars : [ 'literalNames' ],
 	#metaclass : #Class,
 	#category : #'Kernel-Methods'
 }
@@ -123,4 +124,24 @@ CompiledMethod >> selector [
 	^ penultimateLiteral isSymbol
 		ifTrue: [penultimateLiteral]
 		ifFalse: [penultimateLiteral instVarAt: 2]
+]
+CompiledMethod >> allLiterals [
+	"Answer an Array of the literals referenced by the receiver.	
+	 including superclass + selector/properties"
+	| literals numberLiterals |
+	literals := Array new: (numberLiterals := self numLiterals).
+	1 to: numberLiterals do: [:index |
+		literals at: index put: (self objectAt: index + 1)].
+	^literals
+]
+CompiledMethod >> indexOfLiteralBinding: aSymbol [
+	
+	self allLiterals withIndexDo: [:each :index |
+		(((each isVariableBinding 
+ 			and: [ each key = aSymbol asSymbol ])
+ 			and: [ each value index isNil not ])
+			and: [ each value index > 0]) 
+		ifTrue: [^ index].		
+	].
+	^ nil
 ]

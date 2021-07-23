@@ -69,3 +69,7 @@ Association >> value [
 Association >> value: anObject [
 	value := anObject
 ]
+
+Association >> isVariableBinding [
+	^ true
+]

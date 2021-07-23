@@ -626,3 +626,7 @@ Object >> ~~ anObject [
 		ifTrue: [ false ]
 		ifFalse: [ true ]
 ]
+
+Object >> isVariableBinding [
+	^ false
+]
