@@ -1,5 +1,5 @@
 Class {
-	#name : #DynamicTest,
+	#name : #DynamicTest2,
 	#superclass : #Object,
 	#metaclass : #Class,
 	#category : #'Kernel-Variables'

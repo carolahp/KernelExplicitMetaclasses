@@ -2,7 +2,7 @@ Class {
 	#name : #SlotTest,
 	#superclass : #Object,
 	#metaclass : #Class,
-	#category : #'Application'
+	#category : #'Kernel-Variables'
 }
 
 SlotTest >> methodliterals [

@@ -1,1 +1,1 @@
-Package { #name : #'Application' }
+Package { #name : #'Kernel-Variables' }

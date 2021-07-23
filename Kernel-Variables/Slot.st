@@ -7,7 +7,7 @@ Class {
 		'owningClass',
 		'definingClass'
 	],
-	#category : #'Application'
+	#category : #'Kernel-Variables'
 }
 Slot >> read: anObject [
 	"System log: thisContext method asString."

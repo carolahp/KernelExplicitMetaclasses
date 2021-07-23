@@ -6,7 +6,7 @@ Class {
 		'name',
 		'index'
 	],
-	#category : #'Application'
+	#category : #'Kernel-Variables'
 }
 DynVar >> read [
 	| context indx |
