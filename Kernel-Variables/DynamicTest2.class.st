@@ -5,22 +5,11 @@ Class {
 	#category : #'Kernel-Variables'
 }
 
-{ #category : #'as yet unclassified' }
-DynamicTest >> test [
-	| holahola |
-	holahola := 'hola'.
-	System log: holahola asString.
-	self readHolahola.
-	System log: holahola asString.
-	self writeHolahola.
-	System log: holahola asString.
+
+DynamicTest2 >> readHolaFromOutside [
+	^ System log: 'Leyendo desde DynamicTest2: ', holahola asString
 ]
 
-DynamicTest >> readHolahola [
-	System log: holahola asString
-]
-
-DynamicTest >> writeHolahola [
-	holahola := 'chao'.
-	
+DynamicTest2 >> writeHolaFromOutside [
+	holahola := 12
 ]

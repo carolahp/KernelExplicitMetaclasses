@@ -9,33 +9,32 @@ Class {
 	#category : #'Kernel-Variables'
 }
 DynVar >> read [
-	| context indx |
-	
-	"System log: 'leyendo DynVar'."
-	context := thisContext.
+	| context var |
+	context := thisContext sender.
 	[ context isNil ] whileFalse: [ 
-		indx := context method indexOfLiteralBinding: #dynvar .
-		indx ifNotNil: [ 
-			"System log: 'DynVar found in ', context asString, ' at index ', indx asString."
-			^ context tempAt: indx ].
+		
+		var := context method dynamicVariableNamed: name.
+		(var isNil not) ifTrue: [ 
+			^ context tempAt: var index ].
 		context :=  context sender
 	].
 	^ nil
 ]
 DynVar >> write: anObject [
-	| context indx |
+	| context var |
 	
-	"System log: 'escribiendo DynVar'."
-	context := thisContext.
+	context := thisContext sender.
 	[ context isNil ] whileFalse: [ 
-		indx := context method indexOfLiteralBinding: #dynvar .
-		indx ifNotNil: [ 
-			"System log: 'DynVar found in ', context asString, ' at index ', indx asString."
-			^ context tempAt: indx put: anObject ].
+		var := context method dynamicVariableNamed: name.
+		(var isNil not) ifTrue: [ 
+			^ context tempAt: var index put: anObject ].
 		context :=  context sender
 	].
 	^ nil
 ]
 DynVar >> index [
 	^ index
+]
+DynVar >> name [
+	^ name
 ]

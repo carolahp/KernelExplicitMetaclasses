@@ -134,6 +134,7 @@ CompiledMethod >> allLiterals [
 		literals at: index put: (self objectAt: index + 1)].
 	^literals
 ]
+
 CompiledMethod >> indexOfLiteralBinding: aSymbol [
 	
 	self allLiterals withIndexDo: [:each :index |
@@ -142,6 +143,19 @@ CompiledMethod >> indexOfLiteralBinding: aSymbol [
  			and: [ each value index isNil not ])
 			and: [ each value index > 0]) 
 		ifTrue: [^ index].		
+	].
+	^ nil
+]
+
+CompiledMethod >> dynamicVariableNamed: aSymbol [
+	
+	self allLiterals withIndexDo: [:each :index |
+		((((each isVariableBinding 
+		 	and: [ each key = #dynvar ])
+		 	and: [ each value index isNil not ])
+			and: [ each value index > 0])
+			and: [ each value name asSymbol = aSymbol asSymbol]) 
+		ifTrue: [^ each value].		
 	].
 	^ nil
 ]
