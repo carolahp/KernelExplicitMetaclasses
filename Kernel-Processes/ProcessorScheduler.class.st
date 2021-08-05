@@ -6,7 +6,7 @@ Class {
 		'suspendedProcessLists',
 		'activeProcess'
 	],
-	#metaclass : #Uninstantiable,
+	#metaclass : #Class,
 	#category : #'Kernel-Processes'
 }
 

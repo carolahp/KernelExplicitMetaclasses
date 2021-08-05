@@ -2,7 +2,7 @@ Class {
 	#name : #True,
 	#superclass : #Object,
 	#role : 'True',
-	#metaclass : #Uninstantiable,
+	#metaclass : #Class,
 	#category : #'Kernel-Objects'
 }
 

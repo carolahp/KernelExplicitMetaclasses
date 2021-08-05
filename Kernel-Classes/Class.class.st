@@ -1,11 +1,6 @@
 Class {
 	#name : #Class,
 	#superclass : #Behavior,
-	#role : 'Metaclass',
-	#instVars : [
-		'metaclass',
-		'name'
-	],
 	#metaclass : #Class,
 	#category : #'Kernel-Classes'
 }
@@ -24,12 +19,7 @@ Class >> entryPoint [
 
 { #category : #'as yet unclassified' }
 Class >> name [
-	^ name
-]
-
-{ #category : #'as yet unclassified' }
-Class >> name: aSymbol [
-	name := aSymbol
+	^ 'aClass'
 ]
 
 { #category : #'as yet unclassified' }
