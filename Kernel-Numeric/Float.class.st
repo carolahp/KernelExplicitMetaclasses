@@ -107,67 +107,83 @@ Float >> >= aNumber [
 ]
 
 { #category : #'as yet unclassified' }
-Float >> E^ [ 2.718281828459045235360287471353
+Float >> E [ 
+	^2.718281828459045235360287471353
 ]
 
 { #category : #'as yet unclassified' }
-Float >> Epsilon^ [ 0.000000000001
+Float >> Epsilon [
+	^ 0.000000000001
 ]
 
 { #category : #'as yet unclassified' }
-Float >> Halfpi^ [ 3.14159265358979323846264338327950288 / 2.0
+Float >> Halfpi [ 
+	^ 3.14159265358979323846264338327950288 / 2.0
 ]
 
 { #category : #'as yet unclassified' }
-Float >> Infinity^ [ 1.7976931348623157e308 * 1.7976931348623157e308
+Float >> Infinity [
+	^ 1.7976931348623157e308 * 1.7976931348623157e308
 ]
 
 { #category : #'as yet unclassified' }
-Float >> Ln10^ [ 10.0 ln
+Float >> Ln10 [ 
+	^ 10.0 ln
 ]
 
 { #category : #'as yet unclassified' }
-Float >> Ln2^ [ 0.69314718055994530941723212145817657
+Float >> Ln2 [ 
+	^ 0.69314718055994530941723212145817657
 ]
 
 { #category : #'as yet unclassified' }
-Float >> MaxValLn^ [ 709.782712893384
+Float >> MaxValLn [ 
+	^ 709.782712893384
 ]
 
 { #category : #'as yet unclassified' }
-Float >> MaxVal^ [ 1.7976931348623157e308
+Float >> MaxVal [ 
+	^ 1.7976931348623157e308
 ]
 
 { #category : #'as yet unclassified' }
-Float >> MinValLogBase2^ [ -1074
+Float >> MinValLogBase2 [ 
+	^ -1074
 ]
 
 { #category : #'as yet unclassified' }
-Float >> NaN^ [ 1.7976931348623157e308 - 1.7976931348623157e308
+Float >> NaN [ 
+	^ 1.7976931348623157e308 - 1.7976931348623157e308
 ]
 
 { #category : #'as yet unclassified' }
-Float >> NegativeInfinity^ [ 0.0 - 1.7976931348623157e308 * 1.7976931348623157e308
+Float >> NegativeInfinity [ 
+	^ 0.0 - 1.7976931348623157e308 * 1.7976931348623157e308
 ]
 
 { #category : #'as yet unclassified' }
-Float >> NegativeZero^ [ 1.0 / (1.7976931348623157e308 * 1.7976931348623157e308) negated
+Float >> NegativeZero [ 
+	^ 1.0 / (1.7976931348623157e308 * 1.7976931348623157e308) negated
 ]
 
 { #category : #'as yet unclassified' }
-Float >> Pi^ [ 3.14159265358979323846264338327950288
+Float >> Pi [ 
+	^ 3.14159265358979323846264338327950288
 ]
 
 { #category : #'as yet unclassified' }
-Float >> RadiansPerDegree^ [ 3.14159265358979323846264338327950288 / 180.0
+Float >> RadiansPerDegree [ 
+	^3.14159265358979323846264338327950288 / 180.0
 ]
 
 { #category : #'as yet unclassified' }
-Float >> Sqrt2^ [ 1.41421356237309504880168872420969808
+Float >> Sqrt2 [
+	^ 1.41421356237309504880168872420969808
 ]
 
 { #category : #'as yet unclassified' }
-Float >> Twopi^ [ 3.14159265358979323846264338327950288 * 2.0
+Float >> Twopi [ 
+	^ 3.14159265358979323846264338327950288 * 2.0
 ]
 
 { #category : #'as yet unclassified' }
