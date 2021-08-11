@@ -167,7 +167,7 @@ Object >> class [
 
 { #category : #'as yet unclassified' }
 Object >> copy [
-	"Answer a copy of me. Subclasses should usually override this method to change copying behavior, not basicCopy. The exception is classes with unique instances, such as Symbol. This operation does not generally copy all the objects that I refer to.."
+	"Answer a copy of me. Subclasses should usually override this method to change copying behavior, not basicCopy. The exception is classes with unique instances, such as ByteSymbol. This operation does not generally copy all the objects that I refer to.."
 
 	^ self basicCopy
 ]
@@ -185,10 +185,11 @@ Object >> doesNotUnderstand: aMessage [
 	System log: thisContext stringCallStack asString.
 	System snapshotAndQuit.
 	
-	(handler := (Smalltalk at: #Processor) activeProcess errorHandler) 
-	ifNil: [ self handleExceptionName: errorString context: thisContext ]
-		ifNotNil: [ handler value: errorString value: self ].
-	^ aMessage sentTo: self	"resend the message if the user proceeds from the debugger"
+	"(handler := (Smalltalk at: #Processor) activeProcess errorHandler) 
+		ifNil: [ self handleExceptionName: errorString context: thisContext ]
+			ifNotNil: [ handler value: errorString value: self ].
+		^ aMessage sentTo: self	"
+	"resend the message if the user proceeds from the debugger"
 ]
 
 { #category : #'as yet unclassified' }
@@ -200,9 +201,9 @@ Object >> error: aString [
 	System log: thisContext stringCallStack asString.
 	System snapshotAndQuit.
 	
-	(handler := (Smalltalk at: #Processor) activeProcess errorHandler)
-		ifNil: [ self handleExceptionName: aString context: thisContext ]
-		ifNotNil: [ handler value: aString value: self ]
+	"(handler := (Smalltalk at: #Processor) activeProcess errorHandler)
+			ifNil: [ self handleExceptionName: aString context: thisContext ]
+			ifNotNil: [ handler value: aString value: self ]"
 ]
 
 { #category : #'as yet unclassified' }
@@ -444,8 +445,8 @@ Object >> perform: selector withArguments: anArray [
 	documentation whatIsAPrimitive."
 
 	<primitive: 84>
-	selector class = Symbol
-		ifFalse: [ ^ self error: 'selector argument must be a Symbol' ].
+	selector class = ByteSymbol
+		ifFalse: [ ^ self error: 'selector argument must be a ByteSymbol' ].
 	self primitiveFailed
 ]
 
@@ -454,8 +455,8 @@ Object >> perform: selector withArguments: argArray inSuperclass: lookupClass [
 	"NOTE:  This is just like perform:withArguments: except that the message lookup process begins, not with the receivers's class, but with the supplied superclass instead. It will fail if lookupcannot be found among the receiver's superclasses. Primitive. Essential. See Object documentation whatIsAPrimitive."
 
 	<primitive: 100>
-	selector class = Symbol
-		ifFalse: [ ^ self error: 'selector argument must be a Symbol' ].
+	selector class = ByteSymbol
+		ifFalse: [ ^ self error: 'selector argument must be a ByteSymbol' ].
 	selector numArgs = argArray size
 		ifFalse: [ ^ self error: 'incorrect number of arguments' ].
 	(self class == lookupClass

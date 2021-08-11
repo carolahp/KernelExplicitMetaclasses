@@ -17,6 +17,11 @@ Behavior >> >> aSelector [
 ]
 
 { #category : #'as yet unclassified' }
+Behavior >> name [
+	^ 'a Behavior'
+]
+
+{ #category : #'as yet unclassified' }
 Behavior >> allInstVarNames [
 	"Answer an Array of the names of all my instance variables."
 	

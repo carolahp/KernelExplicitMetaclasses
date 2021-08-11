@@ -10,7 +10,7 @@ String >> < aString [
 	"Answer whether the receiver sorts before aString.
 	The collation order is simple ascii (with case differences)."
 
-	^ (self compare: self with: aString collated: AsciiOrder) = 1
+	^ (self compare: self with: aString collated: self class asciiOrder) = 1
 ]
 
 { #category : #'as yet unclassified' }
@@ -18,7 +18,7 @@ String >> <= aString [
 	"Answer whether the receiver sorts before or equal to aString.
 	The collation order is simple ascii (with case differences)."
 
-	^ (self compare: self with: aString collated: AsciiOrder) <= 2
+	^ (self compare: self with: aString collated: self class asciiOrder) <= 2
 ]
 
 { #category : #'as yet unclassified' }
@@ -28,7 +28,7 @@ String >> = aString [
 
 	aString species == String
 		ifFalse: [ ^ false ].
-	^ (self compare: self with: aString collated: AsciiOrder) = 2
+	^ (self compare: self with: aString collated: self class asciiOrder) = 2
 ]
 
 { #category : #'as yet unclassified' }
@@ -36,7 +36,7 @@ String >> > aString [
 	"Answer whether the receiver sorts after aString.
 	The collation order is simple ascii (with case differences)."
 
-	^ (self compare: self with: aString collated: AsciiOrder) = 3
+	^ (self compare: self with: aString collated: self class asciiOrder) = 3
 ]
 
 { #category : #'as yet unclassified' }
@@ -44,7 +44,7 @@ String >> >= aString [
 	"Answer whether the receiver sorts after or equal to aString.
 	The collation order is simple ascii (with case differences)."
 
-	^ (self compare: self with: aString collated: AsciiOrder) >= 2
+	^ (self compare: self with: aString collated: self class asciiOrder) >= 2
 ]
 
 { #category : #'as yet unclassified' }
@@ -67,7 +67,7 @@ String >> asLowercase [
 		translate: result
 		from: 1
 		to: result size
-		table: LowercasingTable.
+		table: self class lowercasingTable.
 	^ result
 ]
 
@@ -82,11 +82,11 @@ String >> asString [
 String >> asSymbol [
 	"This is the only place that new Symbols are created. A Symbol is created if and only if there is not already a Symbol with its contents in existance."
 
-	Symbol
+	ByteSymbol
 		allInstancesDo: [ :sym | 
 			self = sym
 				ifTrue: [ ^ sym ] ].
-	^ (Symbol basicNew: self size) initFrom: self
+	^ (ByteSymbol basicNew: self size) initFrom: self
 ]
 
 { #category : #'as yet unclassified' }
@@ -123,7 +123,7 @@ String >> compare: aString [
 	The collation sequence is ascii with case differences ignored.
 	To get the effect of a <= b, but ignoring case, use (a compare: b) <= 2."
 
-	^ self compare: self with: aString collated: CaseInsensitiveOrder
+	^ self compare: self with: aString collated: self class caseInsensitiveOrder
 ]
 
 { #category : #'as yet unclassified' }
@@ -170,8 +170,8 @@ String >> findString: key startingAt: start caseSensitive: caseSensitive [
 		startingAt: start
 		matchTable:
 			(caseSensitive
-				ifTrue: [ CaseSensitiveOrder ]
-				ifFalse: [ CaseInsensitiveOrder ])
+				ifTrue: [ self class caseSensitiveOrder ]
+				ifFalse: [ self class caseInsensitiveOrder ])
 ]
 
 { #category : #'as yet unclassified' }
@@ -192,11 +192,11 @@ String >> findSubstring: key in: body startingAt: start matchTable: matchTable [
 					ifTrue: [ ^ startIndex ].
 				index := index + 1 ] ].
 	^ 0	"
-' ' findSubstring: 'abc' in: 'abcdefabcd' startingAt: 1 matchTable: CaseSensitiveOrder 1
-' ' findSubstring: 'abc' in: 'abcdefabcd' startingAt: 2 matchTable: CaseSensitiveOrder 7
-' ' findSubstring: 'abc' in: 'abcdefabcd' startingAt: 8 matchTable: CaseSensitiveOrder 0
-' ' findSubstring: 'abc' in: 'abcdefABcd' startingAt: 2 matchTable: CaseSensitiveOrder 0
-' ' findSubstring: 'abc' in: 'abcdefABcd' startingAt: 2 matchTable: CaseInsensitiveOrder 7
+' ' findSubstring: 'abc' in: 'abcdefabcd' startingAt: 1 matchTable: self class caseSensitiveOrder 1
+' ' findSubstring: 'abc' in: 'abcdefabcd' startingAt: 2 matchTable: self class caseSensitiveOrder 7
+' ' findSubstring: 'abc' in: 'abcdefabcd' startingAt: 8 matchTable: self class caseSensitiveOrder 0
+' ' findSubstring: 'abc' in: 'abcdefABcd' startingAt: 2 matchTable: self class caseSensitiveOrder 0
+' ' findSubstring: 'abc' in: 'abcdefABcd' startingAt: 2 matchTable: self class caseInsensitiveOrder 7
 "
 ]
 

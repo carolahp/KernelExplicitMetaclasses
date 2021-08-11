@@ -18,11 +18,6 @@ Class >> entryPoint [
 ]
 
 { #category : #'as yet unclassified' }
-Class >> name [
-	^ 'aClass'
-]
-
-{ #category : #'as yet unclassified' }
 Class >> on: aCollection [
 	"Answer an instance of me initializing it by sending on:"
 
