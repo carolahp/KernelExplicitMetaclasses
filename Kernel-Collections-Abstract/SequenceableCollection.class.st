@@ -230,3 +230,7 @@ SequenceableCollection >> swap: oneIndex with: anotherIndex [
 	self at: oneIndex put: (self at: anotherIndex).
 	self at: anotherIndex put: element
 ]
+
+SequenceableCollection >> withIndexDo: elementAndIndexBlock [
+	1 to: self size do: [ :index | elementAndIndexBlock value: (self at: index) value: index ]
+]

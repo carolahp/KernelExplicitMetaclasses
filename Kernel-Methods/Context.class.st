@@ -223,3 +223,8 @@ Context >> stackp: newStackp [
 	<primitive: 76>
 	self error: 'stackp store failure'
 ]
+
+Context >> objectClass: aReceiver [
+	<primitive: 111>
+	self primitiveFailed
+]
