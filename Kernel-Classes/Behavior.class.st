@@ -233,12 +233,12 @@ Behavior >> name [
 
 { #category : #'as yet unclassified' }
 Behavior >> new [
-	^ self basicNew
+	^ self basicNew initialize
 ]
 
 { #category : #'as yet unclassified' }
 Behavior >> new: desiredSize [
-	^ self basicNew: desiredSize
+	^ (self basicNew: desiredSize) initialize
 ]
 
 { #category : #'as yet unclassified' }

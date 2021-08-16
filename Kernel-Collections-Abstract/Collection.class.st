@@ -185,3 +185,13 @@ Collection >> sum [
 	self do: [ :el | total := total + el ].
 	^ total - seed	"subtract the seed value from the total"
 ]
+
+Collection >> anySatisfy: aBlock [
+	self do: [:each | (aBlock value: each) ifTrue: [^ true]].
+	^ false
+]
+
+Collection >> noneSatisfy: aBlock [
+	self do: [:item | (aBlock value: item) ifTrue: [^ false]].
+	^ true
+]

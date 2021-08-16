@@ -322,3 +322,7 @@ OrderedCollection >> setCollection: anArray [
 OrderedCollection >> size [
 	^ lastIndex - firstIndex + 1
 ]
+
+OrderedCollection >> asOrderedCollection [
+	^ self
+]

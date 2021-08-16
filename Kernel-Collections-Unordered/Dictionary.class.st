@@ -265,3 +265,7 @@ Dictionary >> select: aBlock [
 				ifTrue: [ newCollection add: each ] ].
 	^ newCollection
 ]
+
+Dictionary >> at: key ifAbsentPut: aValue [
+	^ self at: key ifAbsent: [self at: key put: aValue]
+]
