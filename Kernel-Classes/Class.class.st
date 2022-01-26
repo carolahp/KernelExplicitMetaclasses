@@ -29,3 +29,7 @@ Class >> start [
 	System log: 'hello world'. 
         System quit.
 ]
+
+Class >> instSize [
+	^format bitAnd: 16rFFFF
+]

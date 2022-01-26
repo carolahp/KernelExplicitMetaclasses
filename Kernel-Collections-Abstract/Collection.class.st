@@ -195,3 +195,8 @@ Collection >> noneSatisfy: aBlock [
 	self do: [:item | (aBlock value: item) ifTrue: [^ false]].
 	^ true
 ]
+
+Collection >> anyOne [
+	self emptyCheck.
+	self do: [:each | ^ each]
+]
