@@ -4,6 +4,7 @@ Class {
 	#role : 'Float',
 	#type : #words,
 	#metaclass : #FloatMeta,
+	#role: 'Float',
 	#category : #'Kernel-Numeric'
 }
 

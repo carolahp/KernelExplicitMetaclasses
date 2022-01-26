@@ -3,6 +3,7 @@ Class {
 	#superclass : #Set,
 	#role : 'Dictionary',
 	#metaclass : #SetMeta,
+	#role: 'Dictionary',
 	#category : #'Kernel-Collections-Unordered'
 }
 

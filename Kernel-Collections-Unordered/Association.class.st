@@ -7,6 +7,7 @@ Class {
 		'value'
 	],
 	#metaclass : #AssociationMeta,
+	#role: 'Association',
 	#category : #'Kernel-Collections-Unordered'
 }
 
