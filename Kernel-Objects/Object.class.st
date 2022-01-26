@@ -1,7 +1,7 @@
 Class {
 	#name : #Object,
 	#superclass : #nil,
-	#role: 'ProtoObject',
+	#metaclass : #Class,
 	#category : #'Kernel-Objects'
 }
 
@@ -167,7 +167,7 @@ Object >> class [
 
 { #category : #'as yet unclassified' }
 Object >> copy [
-	"Answer a copy of me. Subclasses should usually override this method to change copying behavior, not basicCopy. The exception is classes with unique instances, such as Symbol. This operation does not generally copy all the objects that I refer to.."
+	"Answer a copy of me. Subclasses should usually override this method to change copying behavior, not basicCopy. The exception is classes with unique instances, such as ByteSymbol. This operation does not generally copy all the objects that I refer to.."
 
 	^ self basicCopy
 ]
@@ -185,10 +185,11 @@ Object >> doesNotUnderstand: aMessage [
 	System log: thisContext stringCallStack asString.
 	System snapshotAndQuit.
 	
-	(handler := (Smalltalk at: #Processor) activeProcess errorHandler) 
-	ifNil: [ self handleExceptionName: errorString context: thisContext ]
-		ifNotNil: [ handler value: errorString value: self ].
-	^ aMessage sentTo: self	"resend the message if the user proceeds from the debugger"
+	"(handler := (Smalltalk at: #Processor) activeProcess errorHandler) 
+		ifNil: [ self handleExceptionName: errorString context: thisContext ]
+			ifNotNil: [ handler value: errorString value: self ].
+		^ aMessage sentTo: self	"
+	"resend the message if the user proceeds from the debugger"
 ]
 
 { #category : #'as yet unclassified' }
@@ -200,9 +201,9 @@ Object >> error: aString [
 	System log: thisContext stringCallStack asString.
 	System snapshotAndQuit.
 	
-	(handler := (Smalltalk at: #Processor) activeProcess errorHandler)
-		ifNil: [ self handleExceptionName: aString context: thisContext ]
-		ifNotNil: [ handler value: aString value: self ]
+	"(handler := (Smalltalk at: #Processor) activeProcess errorHandler)
+			ifNil: [ self handleExceptionName: aString context: thisContext ]
+			ifNotNil: [ handler value: aString value: self ]"
 ]
 
 { #category : #'as yet unclassified' }
@@ -217,6 +218,13 @@ Object >> errorNonIntegerIndex [
 	"Error: attempting to use a non-integer object as an index."
 
 	self error: 'Only integers should be used as indices.'
+]
+
+{ #category : #'as yet unclassified' }
+Object >> errorNotIndexable [
+	"Create an error notification that the receiver is not indexable."
+
+	self error: ('Instances of ' , self class name, ' are not indexable. (I am ', self asString,')')
 ]
 
 { #category : #'as yet unclassified' }
@@ -252,7 +260,7 @@ Object >> hash [
 Object >> identityHash [
 	"Answer a SmallInteger whose value is related to the receiver's identity. This method must not be overridden, except by SmallInteger. Primitive. Fails if the receiver is a SmallInteger. Essential. See Object documentation whatIsAPrimitive. Do not override!"
 
-	^ self basicIdentityHash bitShift: 18
+	^ self basicIdentityHash bitShift: 8
 ]
 
 { #category : #'as yet unclassified' }
@@ -376,6 +384,11 @@ Object >> isSmallInteger [
 ]
 
 { #category : #'as yet unclassified' }
+Object >> isSymbol [
+	^ false
+]
+
+{ #category : #'as yet unclassified' }
 Object >> mustBeBoolean [
 	"Error: attempt to use a non-Boolean object as if it were true or false. This message is sent by the virtual machine."
 
@@ -432,8 +445,8 @@ Object >> perform: selector withArguments: anArray [
 	documentation whatIsAPrimitive."
 
 	<primitive: 84>
-	selector class = Symbol
-		ifFalse: [ ^ self error: 'selector argument must be a Symbol' ].
+	selector class = ByteSymbol
+		ifFalse: [ ^ self error: 'selector argument must be a ByteSymbol' ].
 	self primitiveFailed
 ]
 
@@ -442,8 +455,8 @@ Object >> perform: selector withArguments: argArray inSuperclass: lookupClass [
 	"NOTE:  This is just like perform:withArguments: except that the message lookup process begins, not with the receivers's class, but with the supplied superclass instead. It will fail if lookupcannot be found among the receiver's superclasses. Primitive. Essential. See Object documentation whatIsAPrimitive."
 
 	<primitive: 100>
-	selector class = Symbol
-		ifFalse: [ ^ self error: 'selector argument must be a Symbol' ].
+	selector class = ByteSymbol
+		ifFalse: [ ^ self error: 'selector argument must be a ByteSymbol' ].
 	selector numArgs = argArray size
 		ifFalse: [ ^ self error: 'incorrect number of arguments' ].
 	(self class == lookupClass
@@ -526,6 +539,17 @@ Object >> respondsTo: aSymbol [
 ]
 
 { #category : #'as yet unclassified' }
+Object >> setPinnedInMemory: aBoolean [
+	"The VM's garbage collector routinely moves objects as it reclaims and compacts
+	 memory. But it can also pin an object so that it will not be moved around in memory,
+    while still being reclamable by the garbage collector. This can make
+	 it easier to pass objects out through the FFI. Objects are unpinnned when created.
+	 This primitive either pins or unpins an object, and answers if it was already pinned."
+	<primitive: 184 error: ec>
+	^self primitiveFailed
+]
+
+{ #category : #'as yet unclassified' }
 Object >> shouldBePrintedAsLiteral [
 	^ false
 ]
@@ -601,25 +625,4 @@ Object >> ~~ anObject [
 	^ self == anObject
 		ifTrue: [ false ]
 		ifFalse: [ true ]
-]
-
-{ #category : #'as yet unclassified' }
-Object >> isSymbol [
-	^ false
-]
-
-Object >> errorNotIndexable [
-	"Create an error notification that the receiver is not indexable."
-
-	self error: ('Instances of ' , self class name, ' are not indexable. (I am ', self asString,')')
-]
-
-Object >> setPinnedInMemory: aBoolean [
-	"The VM's garbage collector routinely moves objects as it reclaims and compacts
-	 memory. But it can also pin an object so that it will not be moved around in memory,
-    while still being reclamable by the garbage collector. This can make
-	 it easier to pass objects out through the FFI. Objects are unpinnned when created.
-	 This primitive either pins or unpins an object, and answers if it was already pinned."
-	<primitive: 184 error: ec>
-	^self primitiveFailed
 ]

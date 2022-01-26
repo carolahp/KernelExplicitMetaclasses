@@ -1,6 +1,7 @@
 Class {
 	#name : #Dictionary,
 	#superclass : #Set,
+	#role : 'Dictionary',
 	#metaclass : #SetMeta,
 	#role: 'Dictionary',
 	#category : #'Kernel-Collections-Unordered'
@@ -264,4 +265,8 @@ Dictionary >> select: aBlock [
 			(aBlock value: each value)
 				ifTrue: [ newCollection add: each ] ].
 	^ newCollection
+]
+
+Dictionary >> at: key ifAbsentPut: aValue [
+	^ self at: key ifAbsent: [self at: key put: aValue]
 ]

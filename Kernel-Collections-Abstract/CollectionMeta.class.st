@@ -1,6 +1,7 @@
 Class {
 	#name : #CollectionMeta,
 	#superclass : #Class,
+	#metaclass : #Class,
 	#category : #'Kernel-Collections-Abstract'
 }
 

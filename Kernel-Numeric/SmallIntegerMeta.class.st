@@ -1,7 +1,7 @@
 Class {
 	#name : #SmallIntegerMeta,
-	#metaclass : #Class,
 	#superclass : #IntegerMeta,
+	#metaclass : #Class,
 	#category : #'Kernel-Numeric'
 }
 

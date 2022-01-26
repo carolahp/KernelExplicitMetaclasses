@@ -1,9 +1,9 @@
 Class {
 	#name : #ByteArray,
 	#superclass : #ArrayedCollection,
-	#metaclass : #Class,
+	#role : 'ByteArray',
 	#type : #bytes,
-	#role: 'ByteArray',
+	#metaclass : #Class,
 	#category : #'Kernel-Collections-Ordered'
 }
 

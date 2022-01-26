@@ -1,9 +1,9 @@
 Class {
 	#name : #MethodDictionary,
 	#superclass : #Dictionary,
-	#metaclass : #MethodDictionaryMeta,
+	#role : 'MethodDictionary',
 	#type : #variable,
-	#role: 'MethodDictionary',
+	#metaclass : #MethodDictionaryMeta,
 	#category : #'Kernel-Methods'
 }
 

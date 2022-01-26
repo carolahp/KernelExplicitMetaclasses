@@ -1,6 +1,7 @@
 Class {
 	#name : #LinkedListMeta,
 	#superclass : #Class,
+	#metaclass : #Class,
 	#category : #'Kernel-Collections-Ordered'
 }
 

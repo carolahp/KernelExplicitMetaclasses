@@ -1,6 +1,7 @@
 Class {
 	#name : #ValueLinkMeta,
 	#superclass : #Class,
+	#metaclass : #Class,
 	#category : #'Kernel-Collections-Ordered'
 }
 

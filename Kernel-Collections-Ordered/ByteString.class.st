@@ -1,8 +1,8 @@
 Class {
 	#name : #ByteString,
-	#metaclass : #ByteStringMeta,
 	#superclass : #String,
+	#role : 'ByteString',
 	#type : #bytes,
-	#role: 'ByteString',
+	#metaclass : #ByteStringMeta,
 	#category : #'Kernel-Collections-Ordered'
 }

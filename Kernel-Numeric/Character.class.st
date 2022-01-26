@@ -1,9 +1,9 @@
 Class {
 	#name : #Character,
 	#superclass : #Magnitude,
-	#metaclass : #CharacterMeta,
+	#role : 'Character',
 	#type : #immediate,
-	#role: 'Character',
+	#metaclass : #CharacterMeta,
 	#category : #'Kernel-Numeric'
 }
 

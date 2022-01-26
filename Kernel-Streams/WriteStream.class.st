@@ -4,6 +4,7 @@ Class {
 	#instVars : [
 		'writeLimit'
 	],
+	#metaclass : #Class,
 	#category : #'Kernel-Streams'
 }
 

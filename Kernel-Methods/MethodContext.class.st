@@ -2,11 +2,7 @@ Class {
 	#name : #MethodContext,
 	#superclass : #Context,
 	#type : #variable,
-	#instVars : [
-		'method',
-		'closureOrNil',
-		'receiver'
-	],
+	#metaclass : #Class,
 	#category : #'Kernel-Methods'
 }
 

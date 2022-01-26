@@ -1,6 +1,7 @@
 Class {
 	#name : #FloatMeta,
 	#superclass : #NumberMeta,
+	#metaclass : #Class,
 	#category : #'Kernel-Numeric'
 }
 

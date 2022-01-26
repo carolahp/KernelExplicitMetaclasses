@@ -1,12 +1,13 @@
 Class {
 	#name : #Message,
 	#superclass : #Object,
+	#role : 'Message',
 	#instVars : [
 		'selector',
 		'arguments',
 		'lookupClass'
 	],
-	#role: 'Message',
+	#metaclass : #Class,
 	#category : #'Kernel-Methods'
 }
 

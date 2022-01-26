@@ -1,6 +1,7 @@
 Class {
 	#name : #ContextMeta,
 	#superclass : #Class,
+	#metaclass : #Class,
 	#category : #'Kernel-Methods'
 }
 

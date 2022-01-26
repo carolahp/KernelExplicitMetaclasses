@@ -1,6 +1,7 @@
 Class {
 	#name : #Association,
 	#superclass : #Magnitude,
+	#role : 'Association',
 	#instVars : [
 		'key',
 		'value'

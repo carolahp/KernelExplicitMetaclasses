@@ -1,6 +1,7 @@
 Class {
 	#name : #Process,
 	#superclass : #Object,
+	#role : 'Process',
 	#instVars : [
 		'nextLink',
 		'suspendedContext',
@@ -9,18 +10,9 @@ Class {
 		'threadId',
 		'errorHandler'
 	],
+	#metaclass : #Class,
 	#category : #'Kernel-Processes'
 }
-
-{ #category : #'as yet unclassified' }
-Process >> for: aContext priority: anInteger [
-	"Answer an instance of me for the given context (usually a Block) at the given priority."
-
-	^ self
-		initSuspendedContext: aContext;
-		priority: anInteger; 
-		yourself
-]
 
 { #category : #'as yet unclassified' }
 Process >> errorHandler [
@@ -30,6 +22,16 @@ Process >> errorHandler [
 { #category : #'as yet unclassified' }
 Process >> errorHandler: aBlock [
 	errorHandler := aBlock
+]
+
+{ #category : #'as yet unclassified' }
+Process >> for: aContext priority: anInteger [
+	"Answer an instance of me for the given context (usually a Block) at the given priority."
+
+	^ self
+		initSuspendedContext: aContext;
+		priority: anInteger; 
+		yourself
 ]
 
 { #category : #'as yet unclassified' }

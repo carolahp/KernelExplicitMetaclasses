@@ -1,7 +1,7 @@
 Class {
 	#name : #Integer,
-	#metaclass : #IntegerMeta,
 	#superclass : #Number,
+	#metaclass : #IntegerMeta,
 	#category : #'Kernel-Numeric'
 }
 

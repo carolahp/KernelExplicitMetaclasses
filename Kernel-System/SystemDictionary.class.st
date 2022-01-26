@@ -1,7 +1,7 @@
 Class {
 	#name : #SystemDictionary,
+	#superclass : #IdentityDictionary,
 	#role : #SystemDictionary,
 	#metaclass : #SetMeta,
-	#superclass : #IdentityDictionary,
 	#category : #'Kernel-System'
 }

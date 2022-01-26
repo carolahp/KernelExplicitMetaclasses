@@ -1,6 +1,7 @@
 Class {
 	#name : #SequenceableCollection,
 	#superclass : #Collection,
+	#metaclass : #Class,
 	#category : #'Kernel-Collections-Abstract'
 }
 
@@ -228,4 +229,8 @@ SequenceableCollection >> swap: oneIndex with: anotherIndex [
 	element := self at: oneIndex.
 	self at: oneIndex put: (self at: anotherIndex).
 	self at: anotherIndex put: element
+]
+
+SequenceableCollection >> withIndexDo: elementAndIndexBlock [
+	1 to: self size do: [ :index | elementAndIndexBlock value: (self at: index) value: index ]
 ]

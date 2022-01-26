@@ -1,6 +1,7 @@
 Class {
 	#name : #OrderedCollectionMeta,
 	#superclass : #Class,
+	#metaclass : #Class,
 	#category : #'Kernel-Collections-Ordered'
 }
 
@@ -16,6 +17,7 @@ OrderedCollectionMeta >> new: anInteger [
 	^ self basicNew setCollection: (Array new: anInteger)
 ]
 
+{ #category : #'as yet unclassified' }
 OrderedCollectionMeta >> newFrom: aCollection [
 	"Answer an instance of me containing the same elements as aCollection."
 

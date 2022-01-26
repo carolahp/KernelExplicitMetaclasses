@@ -1,9 +1,9 @@
 Class {
 	#name : #SmallInteger,
-	#metaclass : #SmallIntegerMeta,
 	#superclass : #Integer,
+	#role : 'SmallInteger',
 	#type : #immediate,
-	#role: 'SmallInteger',
+	#metaclass : #SmallIntegerMeta,
 	#category : #'Kernel-Numeric'
 }
 

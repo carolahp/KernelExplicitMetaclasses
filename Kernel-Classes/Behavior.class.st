@@ -6,12 +6,19 @@ Class {
 		'methodDict',
 		'format'
 	],
+	#metaclass : #Class,
 	#category : #'Kernel-Classes'
 }
 
 { #category : #'as yet unclassified' }
 Behavior >> >> aSelector [
+	"a comment"
 	^ self methodDict at: aSelector
+]
+
+{ #category : #'as yet unclassified' }
+Behavior >> name [
+	^ 'a Behavior'
 ]
 
 { #category : #'as yet unclassified' }
@@ -226,12 +233,12 @@ Behavior >> name [
 
 { #category : #'as yet unclassified' }
 Behavior >> new [
-	^ self basicNew
+	^ self basicNew initialize
 ]
 
 { #category : #'as yet unclassified' }
 Behavior >> new: desiredSize [
-	^ self basicNew: desiredSize
+	^ (self basicNew: desiredSize) initialize
 ]
 
 { #category : #'as yet unclassified' }

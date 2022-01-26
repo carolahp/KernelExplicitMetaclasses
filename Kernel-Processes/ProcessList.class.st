@@ -1,10 +1,12 @@
 Class {
 	#name : #ProcessList,
 	#superclass : #SequenceableCollection,
+	#role : 'ProcessList',
 	#instVars : [
 		'firstLink',
 		'lastLink'
 	],
+	#metaclass : #Class,
 	#category : #'Kernel-Processes'
 }
 

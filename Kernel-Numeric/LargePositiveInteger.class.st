@@ -1,8 +1,9 @@
 Class {
 	#name : #LargePositiveInteger,
 	#superclass : #Integer,
+	#role : 'LargePositiveInteger',
 	#type : #bytes,
-	#role: 'LargePositiveInteger',
+	#metaclass : #Class,
 	#category : #'Kernel-Numeric'
 }
 

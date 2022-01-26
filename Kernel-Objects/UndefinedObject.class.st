@@ -1,8 +1,8 @@
 Class {
 	#name : #UndefinedObject,
-	#metaclass : #Uninstantiable,
 	#superclass : #Object,
-	#role: 'UndefinedObject',
+	#role : 'UndefinedObject',
+	#metaclass : #Class,
 	#category : #'Kernel-Objects'
 }
 
@@ -11,6 +11,12 @@ UndefinedObject >> basicCopy [
 	"There is the only one instance of me, so answer myself."
 
 	^ self
+]
+
+{ #category : #'as yet unclassified' }
+UndefinedObject >> entryPoint [
+System log: 'hello world'. 
+        System quit.
 ]
 
 { #category : #'as yet unclassified' }
@@ -44,14 +50,4 @@ UndefinedObject >> isNil [
 { #category : #'as yet unclassified' }
 UndefinedObject >> printOn: aStream [
 	aStream nextPutAll: 'nil'
-]
-
-{ #category : #'as yet unclassified' }
-UndefinedObject >> subclass: subclassName instanceVariableNames: instVarNames classVariableNames: classVarNames [
-	^ ClassBuilder new
-		superclass: self;
-		name: subclassName;
-		instVarNames: instVarNames;
-		classVariableNames: classVarNames;
-		build
 ]

@@ -1,6 +1,7 @@
 Class {
 	#name : #ArrayedCollectionMeta,
 	#superclass : #Class,
+	#metaclass : #Class,
 	#category : #'Kernel-Collections-Abstract'
 }
 

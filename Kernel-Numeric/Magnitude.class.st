@@ -1,6 +1,7 @@
 Class {
 	#name : #Magnitude,
 	#superclass : #Object,
+	#metaclass : #Class,
 	#category : #'Kernel-Numeric'
 }
 
